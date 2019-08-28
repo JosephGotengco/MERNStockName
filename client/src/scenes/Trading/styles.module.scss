@@ -1,0 +1,168 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans|Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Montserrat|Nunito&display=swap");
+
+* {
+  user-select: none;
+}
+
+body {
+  background-color: white;
+}
+
+.searchBarContainer {
+  width: 175px;
+  position: relative;
+}
+
+.searchBar {
+  background-color: #353B48;
+  color: #F5F6FA;
+  height: 35px;
+  width: 100%;
+  border: none;
+  width: 100%;
+  border-radius: 15px;
+  padding-left: 15px;
+}
+
+.searchIcon {
+  bottom: 15%;
+  right: 4%;
+  color: #F5F6FA;
+  cursor: pointer;
+}
+
+.closePrice {
+  font-size: 14px;
+  font-weight: 400;
+  font-family: "Open Sans", sans-serif;
+  letter-spacing: 0.5px;
+  color: white;
+}
+
+.changesPos {
+  font-size: 14px;
+  font-weight: 400;
+  font-family: "Open Sans", sans-serif;
+  color: #74b9ff;
+}
+
+.tradeFieldWrapper {
+  color: #F5F6FA;
+
+  label,
+  select + label,
+  input:empty + label {
+    top: 10%;
+    left: 6%;
+    cursor: text;
+    pointer-events: none;
+  }
+
+  label,
+  input,
+  select {
+    transition: all 0.2s;
+    touch-action: manipulation;
+  }
+
+  input:focus + label,
+  input:valid + label,
+  select:focus + label,
+  select:valid + label {
+    top: -50%;
+    left: 2%;
+    letter-spacing: 1px;
+    height: 20px;
+    padding: 0 5px;
+    font-size: 12px;
+    cursor: default;
+  }
+  
+}
+
+.tradeField {
+  width: 150px;
+  height: 35px;
+  font-family: "Nunito", sans-serif;
+  border-radius: 15px;
+  border: none;
+  padding-left: 10px;
+  background-color: #353B48;
+  color: #F5F6FA;
+}
+
+.changesNeg {
+  font-size: 14px;
+  font-weight: 400;
+  font-family: "Open Sans", sans-serif;
+  color: #ff7675;
+}
+
+.noAppearance {
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  select {
+    appearance: none;
+  }
+}
+
+.incrementButton {
+  cursor: pointer;
+  top: -5%;
+  right: 2%;
+  max-height: 20px;
+}
+
+.decrementButton {
+  cursor: pointer;
+  bottom: -5%;
+  right: 2%;
+  max-height: 20px;
+}
+
+.rightIcon {
+  pointer-events: none;
+  right: 2%;
+  top: 15%;
+}
+
+.title {
+  font-size: 18px;
+  font-family: "Nunito", sans-serif;
+  color: #F5F6FA;
+  width: 100%;
+  text-align: center;
+}
+
+.submitButton {
+  color: #7f8fa6;
+  font-family: "Nunito", sans-serif;
+  font-weight: 600;
+  height: 35px;
+  padding: 0 30px;
+  border-radius: 15px;
+  border: none;
+}
+
+.available {
+  color: #F5F6FA;
+  background-color: #2ED573;
+}
+
+.graphControl {
+
+  label {
+    color: #F5F6FA;
+  }
+
+  select {
+    color: #F5F6FA;
+    background-color: #353B48;
+  }
+}

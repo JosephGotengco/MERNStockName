@@ -1,0 +1,22 @@
+.tabulator .tabulator-header,
+.tabulator .tabulator-header .tabulator-col,
+.tabulator .tabulator-tableHolder .tabulator-table,
+.tabulator-row, .tabulator {
+  font-weight: normal;
+  color: #eeeeee;
+  background-color: #273c75;
+  overflow-x: hidden;
+}
+
+.tabulator-row.tabulator-selectable:hover {
+  background-color: #273c75 !important;
+}
+
+.sell-button {
+  width: 60px;
+  height: 25px;
+  border-radius: 15px;
+  background-color: #F5576C;
+  color: #eeeeee;
+  border: none;
+}

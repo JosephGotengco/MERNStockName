@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Roboto&display=swap');
+
+.title {
+    color: #ecf0f1;
+    font-size: 28px;
+    font-family: 'Roboto', sans-serif;
+    cursor: pointer;
+}
+
+.title:hover {
+    color: #ecf0f1;
+    text-decoration: none;
+}
+
+.link {
+    color: #ecf0f1;
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    cursor: pointer;
+}
+
+.link:hover {
+    color: #ecf0f1;
+}
+
+.bgPurple {
+    background-color: #5352ED;
+}

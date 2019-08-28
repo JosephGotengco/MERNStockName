@@ -1,0 +1,214 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans|Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Josefin+Sans:400,700|Raleway&display=swap");
+.heroContainer {
+  min-height: 600px;
+  width: 100%;
+  position: relative;
+  background: url(https://images.pexels.com/photos/839465/pexels-photo-839465.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
+  background-size: cover;
+  background-position: center;
+  padding-top: calc(500px / 2.5);
+}
+
+.overlayTint {
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  overflow: auto;
+  top: 0px;
+  left: 0px;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.heroText {
+  font-size: 3.5em;
+  font-weight: 700;
+  font-family: 'Open Sans', sans-serif;
+  color: #f5f6fa;
+  z-index: 100;
+  width: 100%;
+  position: absolute;
+  text-align: center;
+}
+
+.overviewTitle {
+  font-family: 'Raleway', sans-serif;
+  font-size: 32px;
+  position: relative;
+}
+
+.overviewText {
+  font-family: 'Raleway', sans-serif;
+  text-align: center;
+}
+
+.testimonialTitle {
+  font-family: 'Raleway', sans-serif;
+  font-size: 32px;
+  position: relative;
+}
+
+.overviewTitle::before {
+  content: '';
+  height: 1px;
+  width: 100px;
+  border: 1px solid black;
+  position: absolute;
+  bottom: -40%;
+  left: 25%;
+}
+
+.overviewTitle::after {
+  content: '';
+  height: 1px;
+  width: 35px;
+  border: 1px solid black;
+  position: absolute;
+  bottom: -40%;
+  right: 25%;
+}
+
+.overviewExtraLines::before {
+  content: '';
+  height: 1px;
+  width: 37px;
+  border: 1px solid black;
+  position: absolute;
+  bottom: -80%;
+  left: 20%;
+}
+
+.overviewExtraLines::after {
+  content: '';
+  height: 1px;
+  width: 100px;
+  border: 1px solid black;
+  position: absolute;
+  bottom: -80%;
+  right: 20%;
+}
+
+.overviewExtraLines1::before {
+  content: '';
+  height: 1px;
+  width: 20px;
+  border: 1px solid black;
+  position: absolute;
+  bottom: -80%;
+  left: 35%;
+}
+
+.keyFeaturesTitle {
+  font-family: 'Raleway', sans-serif;
+  font-size: 32px;
+  position: relative;
+}
+
+.keyFeaturesTitle::before {
+  content: '';
+  height: 1px;
+  width: 100px;
+  border: 1px solid black;
+  position: absolute;
+  bottom: -40%;
+  right: 14%;
+}
+
+.keyFeaturesTitle::after {
+  content: '';
+  height: 1px;
+  width: 35px;
+  border: 1px solid black;
+  position: absolute;
+  bottom: -40%;
+  left: 13%;
+}
+
+.overviewExtraLines2::before {
+  content: '';
+  height: 1px;
+  width: 37px;
+  border: 1px solid black;
+  position: absolute;
+  bottom: -80%;
+  right: 5%;
+}
+
+.overviewExtraLines2::after {
+  content: '';
+  height: 1px;
+  width: 104px;
+  border: 1px solid black;
+  position: absolute;
+  bottom: -80%;
+  left: 5%;
+}
+
+.overviewExtraLines3::before {
+  content: '';
+  height: 1px;
+  width: 20px;
+  border: 1px solid black;
+  position: absolute;
+  bottom: -80%;
+  right: 27%;
+}
+
+.cardTitle {
+  margin-top: 20px;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 700;
+}
+
+.cardBodyText {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 400;
+}
+
+.backgroundBox {
+  position: absolute;
+  border: 1px solid black;
+  right: 10%;
+  height: 600px;
+  width: 450px;
+  z-index: -1;
+}
+
+.testimony, .testimonyName {
+  text-align: center;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 400;
+}
+
+.testimony::before, .testimony::after {
+  content: '"';
+}
+
+.testimonyOption {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 2px solid black;
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+.activeOption {
+  background-color: black;
+}
+
+.testimonyImg {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin: 10px;
+  background-color: red;
+}
+
+.footer {
+  background-color: #5352ED;
+  color: white;
+  height: 200px;
+}
+/*# sourceMappingURL=styles.module.css.map */
