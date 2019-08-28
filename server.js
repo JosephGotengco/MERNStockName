@@ -6,7 +6,7 @@ const bodyParser = require("body-parser");
 const session = require("express-session");
 const passport = require("passport");
 const cookieParser = require("cookie-parser");
-require('./passport.js')(passport);
+require("./passport.js")(passport);
 const app = express();
 
 app.use(bodyParser.json());
@@ -30,8 +30,6 @@ app.use(passport.session());
 app.use(cookieParser());
 app.set("trust proxy", "loopback");
 
-
-
 // DB Config
 const db = config.get("mongoURI");
 
@@ -40,7 +38,6 @@ mongoose
   .connect(db, { useNewUrlParser: true, useCreateIndex: true })
   .then(() => console.log("MongoDB Connected..."))
   .catch(err => console.log(err));
-
 
 // Use Routes
 app.use("/api/users", require("./routes/api/users"));
@@ -54,7 +51,7 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
   app.use(express.static("admin/build"));
 
-  app.post("/admin", (req, res) => {
+  app.get("/admin", (req, res) => {
     res.sendFile(path.resolve(_dirname, "admin", "build", index.html));
   });
 
@@ -64,6 +61,5 @@ if (process.env.NODE_ENV === "production") {
 }
 
 const port = process.env.PORT || 5000;
-
 
 app.listen(port, () => console.log(`Server started on port ${port}`));
