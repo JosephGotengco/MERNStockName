@@ -52,7 +52,7 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("admin/build"));
 
   app.get("/admin", (req, res) => {
-    res.sendFile(path.resolve(_dirname, "admin", "build", index.html));
+    res.sendFile(path.resolve(__dirname, "admin", "build", "index.html"));
   });
 
   app.get("*", (req, res) => {
