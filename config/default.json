@@ -1,0 +1,7 @@
+{
+    "mongoURI": "mongodb+srv://joe:7cOTh4d9SQhX8rac@cluster0-keq3e.mongodb.net/users",
+    "jwtSecret": "mt_myJwtSecret",
+    "orderTypes": ["market", "limit", "stop", "buy-stop"],
+    "IEXCloudToken": "pk_5187144627fe41f783caf3f0341d7f3e",
+    "cookieSecret": "Cheese"
+}
