@@ -5,12 +5,13 @@
   "main": "server.js",
   "scripts": {
     "client-install": "npm install --prefix client",
+    "admin-install": "npm install --prefix admin",
     "start": "node server.js",
     "server": "nodemon server.js",
     "client": "npm start --prefix client",
     "admin": "npm start --prefix admin",
     "dev": "concurrently \"npm run server\" \"npm run client\" \"npm run admin\"",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client && npm install --prefix admin && npm run build --prefix admin"
   },
   "author": "Joseph Gotengco",
   "license": "MIT",
