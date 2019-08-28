@@ -1,0 +1,72 @@
+
+.sandwhichWrapper {
+    padding: 5px;
+    color: darken(#dcdde1, 20%);
+    background-color: darken(#2f3640, 10%);
+}
+
+.sandwhichWrapper:hover {
+    cursor: pointer;
+}
+
+.iconWrapper {
+    padding: 5px;
+    padding-right: 15px;
+}
+
+.wrapper {
+    margin: 0;
+    min-height: 100vh;
+    background-color: #2f3640;
+    color: #dcdde1;
+    transition: all 0.2s;
+    float: left;
+}
+
+.link {
+    color: #dcdde1;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    overflow: hidden;
+    padding: 10px;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+}
+
+.link:hover {
+    color: #dcdde1;
+    text-decoration: none;
+}
+
+.expand {
+    min-width: 200px;
+    max-width: 200px;
+
+    .linkText {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        white-space: nowrap;
+        overflow: hidden;
+        order: 2;
+        width: 90%;
+        transition: width 1s;
+    }
+}
+
+.shrink {
+    min-width: 60px;
+    max-width: 60px;
+
+    .linkText {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        white-space: nowrap;
+        overflow: hidden;
+        order: 2;
+        width: 0%;
+        transition: width 1s;
+    }
+}

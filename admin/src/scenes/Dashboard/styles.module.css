@@ -1,0 +1,100 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans|Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Montserrat|Nunito&display=swap");
+.wrapper {
+  min-height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+.headerWrapper {
+  font-size: 32px;
+  font-weight: 700;
+  font-family: "Open Sans", sans-serif;
+  letter-spacing: 0.5px;
+  background-color: #ecf0f1;
+  padding-left: 5%;
+  height: 60px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.overviewCardWrapper {
+  width: 100%;
+  height: 150px;
+  padding: 10px;
+}
+
+.overviewTitle {
+  font-size: 16px;
+  font-weight: 700;
+  font-family: "Open Sans", sans-serif;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
+  color: #ecf0f1;
+}
+
+.overviewData {
+  font-size: 60px;
+  font-weight: 900;
+  font-family: "Open Sans", sans-serif;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: #ecf0f1;
+}
+
+.redBG {
+  background-color: #e74c3c;
+}
+
+.greenBG {
+  background-color: #2ecc71;
+}
+
+.blueBG {
+  background-color: #3498db;
+}
+
+.purpleBG {
+  background-color: #9b59b6;
+}
+
+.rowScroll {
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.graphContainer {
+  max-height: 800px;
+  padding-left: 20px;
+}
+
+.scrollingWrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.card {
+  min-width: 250px;
+  margin: 0 10px;
+  background-color: #e74c3c;
+  display: inline-block;
+}
+/*# sourceMappingURL=styles.module.css.map */

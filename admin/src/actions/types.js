@@ -1,0 +1,2 @@
+export const USERS_LOADING = 'USERS_LOADING';
+export const USERS_LOADED = 'USERS_LOADED';
