@@ -39,7 +39,7 @@ class Overview extends Component {
           {companyName} {ticker ? "(" + ticker + ")" : null}
         </div>
         <div className="d-flex flex-column text-right">
-          <div className={closePrice}>{close ? "$" + close : null}</div>
+          <div className={close}>{close ? "$" + close : null}</div>
           <div className={change > 0 ? changesPos : changesNeg}>
             {!change ? null : change.toFixed(2)}{" "}
             {!changePercent ? null : "(" + changePercent.toFixed(2) + "%)"}

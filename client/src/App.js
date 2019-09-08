@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import AppNavbar from "./components/AppNavbar";
 
 import { Provider } from "react-redux";
 import configureStore from "./store";
@@ -14,6 +13,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Home from "./scenes/Home";
 import Error404 from "./scenes/Error404";
 import Trading from "./scenes/Trading";
+import Admin from "./scenes/Admin";
 
 export const history = createBrowserHistory();
 
@@ -37,10 +37,10 @@ class App extends Component {
         <PersistGate loading={null} persistor={persistor}>
           <div className="App">
             <Router history={history}>
-              <AppNavbar currentLink={window.location.pathname} />
               <Switch>
                 <Route exact path="/" component={Home} />
                 <Route exact path="/trading" component={Trading} />
+                <Route exact path="/admin" component={Admin} />
                 <Route exact path="*" component={Error404} />
               </Switch>
             </Router>

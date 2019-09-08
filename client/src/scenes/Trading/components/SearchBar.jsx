@@ -3,7 +3,7 @@ import Search from '@material-ui/icons/Search';
 
 import { searchIcon } from '../styles.module.css';
 
-import { handleTickerSearch } from '../../../actions/tradingActions';
+import { handleTickerSearch } from '../../../actions/graphActions';
 
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';

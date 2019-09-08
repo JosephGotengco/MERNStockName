@@ -12,19 +12,14 @@ router.post(
       if (err) {return next(err);}
       if(!user) {return res.status(400).json({ msg: "invalid credentials" });}
       if (user) {
-        if (user.role === 'admin') {
-          res.redirect("/admin");
-          // req.login(user, (err) => {
-          //   if (err) {return next(err);}
-          //   return res.status(200).json({...user});
-          // });
-        } else if (user.role === 'standard') {
-          delete user.role;
+        // if (user.role === 'admin') {
+          
+        // } else if (user.role === 'standard') {
           req.login(user, (err) => {
             if (err) { return next(err); }
             return res.status(200).json({ ...user });
           });
-        }
+        // }
       }
     })  (req, res, next)
   }

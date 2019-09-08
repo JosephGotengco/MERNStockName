@@ -23,7 +23,7 @@ class ConfirmTradeModal extends Component {
 
     if (ticker) {
       axios
-        .get(`${baseURL}/stable/stock/${ticker}/quote?token=${apiToken}`)
+        .get(`${baseURL}/stable/stock/${ticker}/previous?token=${apiToken}`)
         .then(
           res => {
             this.setState({

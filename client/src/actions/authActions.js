@@ -13,7 +13,12 @@ import {
   REGISTER_FAIL
 } from "./types";
 
-// Check token & load user
+// check user is admin
+export const checkAdmin = () => (dispatch) => {
+  
+}
+
+// load user
 export const loadUser = () => (dispatch) => {
   // User loading
   dispatch({ type: USER_LOADING });
@@ -26,8 +31,9 @@ export const loadUser = () => (dispatch) => {
       });
     })
     .catch(err => {
+      console.log(err);
       history.push("/");
-      dispatch(returnErrors(err.response.data, err.response.status));
+      // dispatch(returnErrors(err.response.data, err.response.status));
       dispatch({
         type: AUTH_ERROR
       });
@@ -86,11 +92,17 @@ export const login = ({ username, password }) => dispatch => {
   axios
     .post("/api/auth", body, config)
     .then(res => {
-      dispatch({
-        type: LOGIN_SUCCESS,
-        payload: res.data
-      });
-      history.push("/trading");
+      const user = res.data;
+      if (user.role === "admin") {
+        console.log("You are admin!");
+        history.push("/admin");
+      } else {
+        dispatch({
+          type: LOGIN_SUCCESS,
+          payload: res.data
+        });
+        history.push("/trading");
+      }
     })
     .catch(err => {
       dispatch(

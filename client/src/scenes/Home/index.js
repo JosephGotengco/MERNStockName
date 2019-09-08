@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import AppNavbar from "./../../components/AppNavbar";
 
 import Hero from "./components/Hero2";
 
@@ -63,6 +64,7 @@ class Home extends Component {
   render() {
     return (
       <React.Fragment>
+        <AppNavbar currentLink={window.location.pathname} />
         <Hero />
         <Container fluid style={{ padding: "10px 20px" }}>
           <Row style={{ marginTop: "30px" }}>

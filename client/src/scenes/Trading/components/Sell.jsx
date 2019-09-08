@@ -1,247 +1,70 @@
 import React, { Component } from "react";
-import Search from "@material-ui/icons/Search";
-import ExpandMore from "@material-ui/icons/ExpandMore";
-import ExpandLess from "@material-ui/icons/ExpandLess";
-import { Row, Col } from "reactstrap";
-import ConfirmTradeModal from "./ConfirmTradeModal";
-
-import { handleTrade } from "../../../actions/tradingActions";
-
 import { connect } from "react-redux";
-import PropTypes from "prop-types";
+import SellModal from "./SellModal";
+import axios from 'axios';
+import "../table.css";
 
-import {
-  tradeField,
-  title,
-  noAppearance,
-  incrementButton,
-  decrementButton,
-  rightIcon,
-  tradeFieldWrapper,
-  submitButton,
-  available
-} from "../styles.module.css";
 
-class Trade extends Component {
+class Sell extends Component {
   state = {
-    orderType: "",
-    ticker: "",
-    shares: "",
-    price: ""
+    stocks: [],
+    prices: [],
+    watchlist: []
   };
 
-  static propTypes = {
-    handleTrade: PropTypes.func.isRequired
-  };
-
-  orderTypes = [
-    { type: "Market Order", val: "market" },
-    { type: "Limit Order", val: "limit" },
-    { type: "Stop Order", val: "stop" },
-    { type: "Buy-Stop Order", val: "buy-stop" }
-  ];
-
-  onChange = e => {
-    const { name, value } = e.target;
-    // validation for shares
-    this.setState({ [name]: value });
-    if (name === "shares" || name === "price") {
-      const elseVal = this.state[name] === "0.00" ? "" : this.state[name];
-      const value = e.target.validity.valid ? e.target.value : elseVal;
-      this.setState({ [name]: value });
-    } else {
-      this.setState({ [name]: value });
+  async componentDidUpdate(prevProps) {
+    if (prevProps.stocks !== this.props.stocks) {
+      const { stocks, watchlist } = this.props;
+      let tickers = '';
+      for (let i = 0; i < stocks.length; i++) {
+        tickers += `${stocks[i].ticker} `;
+      }
+      let response = await axios.get(`https://cloud.iexapis.com/stable/tops/last?symbols=${tickers}&token=pk_5187144627fe41f783caf3f0341d7f3e`)
+      let prices = response.data.map((val) => {return val.price});
+      console.log(prices);
+      this.setState({
+        stocks,
+        watchlist,
+        prices
+      });
     }
-  };
-
-  handleIncrement = e => {
-    const name = e.target.getAttribute("name");
-    const currVal = this.state[name];
-    if (name === "shares") {
-      const newVal = currVal === "" ? 1 : parseInt(currVal) + 1;
-      this.setState({ [name]: newVal });
-    } else {
-      const newVal =
-        currVal === "" ? "1.00" : (parseFloat(currVal) + 1).toFixed(2);
-      this.setState({ [name]: newVal });
-    }
-  };
-
-  handleDecrement = e => {
-    const name = e.target.getAttribute("name");
-    const currVal = this.state[name];
-    if (name === "shares") {
-      const newVal = currVal === 0 || currVal - 1 <= 0 ? "" : currVal - 1;
-      this.setState({ [name]: newVal });
-    } else {
-      const newVal =
-        currVal === "" || parseFloat(currVal) - 1 <= 0
-          ? ""
-          : (parseFloat(currVal) - 1).toFixed(2);
-      this.setState({ [name]: newVal });
-    }
-  };
-
-  orderCheck = () => {
-    const { ticker, shares, price, orderType } = this.state;
-    if (ticker === "" || shares === "") {
-      return false;
-    } else if (orderType !== "market" && price === "") {
-      return false;
-    } else {
-      return true;
-    }
-  };
+  }
 
   render() {
-    const { ticker, shares, price, orderType } = this.state;
-
+    const { stocks, prices, watchlist } = this.state;
     return (
-      <div className="w-100 h-100">
-        <Row className="m-0">
-          <div className={title} style={{borderBottom: "2px solid #EEEEEE", padding: "1rem 0" }}>Sell</div>
-        </Row>
-        <Row>
-          <Col className="d-flex mt-5">
-            <div
-              className={
-                noAppearance +
-                " " +
-                tradeFieldWrapper +
-                " position-relative d-inline mx-auto tradeFieldWrapper"
-              }
-            >
-              <select
-                className={tradeField}
-                id="orderType"
-                name="orderType"
-                value={orderType}
-                onChange={this.onChange}
-                required
-              >
-                <option key="" value="" disabled hidden />
-                {this.orderTypes.map(option => (
-                  <option key={option.val} value={option.val}>
-                    {option.type}
-                  </option>
-                ))}
-              </select>
-              <label className="position-absolute" htmlFor="orderType">
-                Order Type
-              </label>
-              <ExpandMore className={rightIcon + " position-absolute"} />
+      <div className="w-100 h-100 table-wrapper">
+        <div className="title-row">
+          <div className="title-text">Your Stocks</div>
+        </div>
+        <div className="header-row">
+          <div className="header-text">Ticker</div>
+          <div className="header-text">Amount</div>
+          <div className="header-text">Current Price</div>
+          <div className="header-text"></div>
+        </div>
+        {stocks.map((stock, i) => {
+          return (
+            <div className="table-row" key={i}>
+              <div className="data-row">
+                <div className="table-col">{stock.ticker.toUpperCase()}</div>
+                <div className="table-col">{stock.qty}</div>
+                <div className="table-col">${prices[i]}</div>
+                <div className="table-col btn-col"><SellModal/></div>
+              </div>
             </div>
-          </Col>
-          <Col className="d-flex mt-5">
-            <div
-              className={
-                tradeFieldWrapper + " position-relative d-inline mx-auto"
-              }
-            >
-              <input
-                className={tradeField}
-                onChange={this.onChange}
-                name="ticker"
-                value={ticker}
-                required
-              />
-              <label className="position-absolute" htmlFor="ticker">
-                Ticker
-              </label>
-              <Search className={rightIcon + " position-absolute"} />
-            </div>
-          </Col>
-        </Row>
-        <Row>
-          <Col className="d-flex mt-5">
-            <div
-              className={
-                noAppearance +
-                " " +
-                tradeFieldWrapper +
-                " position-relative d-inline mx-auto"
-              }
-            >
-              <input
-                className={tradeField}
-                onChange={this.onChange}
-                name="shares"
-                type="number"
-                pattern="^[1-9][0-9]*"
-                min="0"
-                value={shares}
-                required
-              />
-              <label className="position-absolute" htmlFor="shares">
-                Shares
-              </label>
-              <ExpandLess
-                className={incrementButton + " position-absolute"}
-                name="shares"
-                onClick={this.handleIncrement.bind(this)}
-              />
-              <ExpandMore
-                className={decrementButton + " position-absolute"}
-                name="shares"
-                onClick={this.handleDecrement.bind(this)}
-              />
-            </div>
-          </Col>
-          <Col className="d-flex mt-5">
-            <div
-              className={
-                noAppearance +
-                " " +
-                tradeFieldWrapper +
-                " position-relative d-inline mx-auto"
-              }
-            >
-              <input
-                className={tradeField}
-                onChange={this.onChange}
-                name="price"
-                type="number"
-                pattern="^[1-9][0-9.]*"
-                min="0.00"
-                step="0.01"
-                value={ ( orderType === 'market') ? '' : price }
-                disabled={ ( orderType === 'market' ) ? true : false }
-                required
-              />
-              <label className="position-absolute" htmlFor="price">
-                Price (USD)
-              </label>
-              <ExpandLess
-                className={incrementButton + " position-absolute"}
-                name="price"
-                onClick={ ( orderType === 'market' ) ? null : this.handleIncrement.bind(this)}
-              />
-              <ExpandMore
-                className={decrementButton + " position-absolute"}
-                name="price"
-                onClick={ ( orderType === 'market' ) ? null : this.handleDecrement.bind(this)}
-              />
-            </div>
-          </Col>
-        </Row>
-        <Row className="d-flex justify-content-center mt-5">
-          <ConfirmTradeModal
-            ticker={ticker}
-            orderType={orderType}
-            shares={shares}
-            price={price}
-            isReady={this.orderCheck}
-            buttonClass={
-              this.orderCheck() ? submitButton + " " + available : submitButton
-            }
-          />
-        </Row>
+          );
+        })}
       </div>
     );
   }
 }
 
+const mapStateToProps = state => ({
+  stocks: state.auth.stocks
+});
+
 export default connect(
-  null,
-  { handleTrade }
-)(Trade);
+  mapStateToProps,
+  null
+)(Sell);

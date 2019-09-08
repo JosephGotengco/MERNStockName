@@ -1,0 +1,34 @@
+.table-wrapper {
+  min-height: 300px;
+}
+
+.title-row {
+  width: 100%;
+  border-bottom: 2px solid #F5F6FA;
+  display: flex;
+  justify-content: center;
+}
+
+.title-text {
+  color: #F5F6FA;
+  font-size: 18px;
+  margin: 15px 0;
+}
+
+.header-row, .data-row {
+  color: #EEEEEE;
+  padding: 0 40px;
+}
+
+.header-text, .table-col {
+  display: inline-block;
+  min-width: 25%;
+}
+
+.table-row {
+  color: #EEEEEE;
+}
+
+.btn {
+  align-self: center
+}

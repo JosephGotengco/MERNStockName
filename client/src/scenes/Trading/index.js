@@ -7,6 +7,7 @@ import Sell from "./components/Sell";
 import { Container, Row, Col } from "reactstrap";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import AppNavbar from "./../../components/AppNavbar";
 import { loadUser } from "../../actions/authActions";
 
 
@@ -24,6 +25,7 @@ class TradePage extends Component {
   render() {
     return (
       <React.Fragment>
+        <AppNavbar currentLink={window.location.pathname} />
         <Container fluid style={{ backgroundColor: "#303952", minHeight: "100vh", padding: "10px 20px" }}>
           <Row>
             <Col xl="7" className="p-3">

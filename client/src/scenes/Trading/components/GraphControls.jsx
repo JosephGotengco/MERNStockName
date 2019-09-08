@@ -8,7 +8,7 @@ import {
   changeGraphType,
   changeGraphPeriod,
   getGraphData
-} from "../../../actions/tradingActions";
+} from "../../../actions/graphActions";
 
 import { Container, Row, Col } from "reactstrap";
 

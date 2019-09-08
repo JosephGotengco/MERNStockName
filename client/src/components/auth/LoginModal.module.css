@@ -1,0 +1,10 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono&display=swap");
+
+.wrapper {
+  border-radius: 20px;
+}
+
+.loginImage {
+  background-image: url("https://image.freepik.com/free-vector/creation-responsive-internet-website-multiple-platforms-building-mobile-interface-screen-laptop_119244-43.jpg");
+  min-height: 300px;
+}
