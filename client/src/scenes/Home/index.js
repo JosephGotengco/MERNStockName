@@ -65,10 +65,10 @@ class Home extends Component {
     return (
       <React.Fragment>
         <AppNavbar currentLink={window.location.pathname} />
-        <Hero />
         <Container fluid style={{ padding: "10px 20px" }}>
+          <Hero />
           <Row style={{ marginTop: "30px" }}>
-            <Col xl={{ size: 12 }} className="d-flex justify-content-center" style={{marginTop: "2rem"}}>
+            <Col xl={{ size: 12 }} className="d-flex justify-content-center" style={{ marginTop: "2rem" }}>
               <h2 className={overviewTitle}>
                 About Stock Name
                 <div className={overviewExtraLines} />
@@ -96,7 +96,7 @@ class Home extends Component {
             </Col>
           </Row>
           <Row style={{ marginTop: "30px" }}>
-            <Col xl={{ size: 12 }} className="d-flex justify-content-center" style={{marginTop: "2rem"}}>
+            <Col xl={{ size: 12 }} className="d-flex justify-content-center" style={{ marginTop: "2rem" }}>
               <h2 className={keyFeaturesTitle}>
                 Key Features
                 <div className={overviewExtraLines2} />
@@ -186,7 +186,7 @@ class Home extends Component {
             </Col>
           </Row>
           <Row style={{ marginTop: "30px" }}>
-            <Col xl={{ size: 12 }} className="d-flex justify-content-center" style={{marginTop: "2rem", marginBottom: "2rem"}}>
+            <Col xl={{ size: 12 }} className="d-flex justify-content-center" style={{ marginTop: "2rem", marginBottom: "2rem" }}>
               <h2 className={testimonialTitle}>Testimonials</h2>
             </Col>
           </Row>
@@ -225,15 +225,15 @@ class Home extends Component {
                   <Row>
                     <Col xl="12" style={{ padding: "1rem" }}>
                       <div className={testimony}>
-                        Stock Name was the best choice I have made in a long
-                        time.
+                        When I investing in stocks, I have fun doing it.
                         <br />
-                        It's intuitive design and easy to use and quick trading
-                        platform allowed me to make decisions
+                        Stock Name's aesthetics really are amazing and I really
+                        appreciate the effort that was put into it.
                         <br />
-                        on where to invest my money compared to other platforms
-                        I've used in the past.
-                        <br />I would never go back.
+                        It's not often you find a financial website with this
+                        level of design, UI, and UX.
+                        <br />
+                        I can even describe it in three words - I love it!
                       </div>
                       <div className="d-flex justify-content-center w-100">
                         <img

@@ -1,35 +1,22 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans|Roboto&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Josefin+Sans:400,700|Raleway&display=swap");
-.heroContainer {
-  min-height: 600px;
-  width: 100%;
-  position: relative;
-  background: url(https://images.pexels.com/photos/839465/pexels-photo-839465.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
-  background-size: cover;
-  background-position: center;
-  padding-top: calc(500px / 2.5);
-}
-
-.overlayTint {
-  z-index: 1;
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  overflow: auto;
-  top: 0px;
-  left: 0px;
-  background: rgba(0, 0, 0, 0.4);
-}
-
 .heroText {
-  font-size: 3.5em;
-  font-weight: 700;
-  font-family: 'Open Sans', sans-serif;
-  color: #f5f6fa;
-  z-index: 100;
   width: 100%;
-  position: absolute;
-  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 40px;
+  margin: 2rem 0;
+}
+
+.heroInfoText {
+  width: 100%;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 18px;
+}
+
+.heroImage {
+  -o-object-fit: contain;
+     object-fit: contain;
+  max-width: 80%;
 }
 
 .overviewTitle {
@@ -175,13 +162,15 @@
   z-index: -1;
 }
 
-.testimony, .testimonyName {
+.testimony,
+.testimonyName {
   text-align: center;
   font-family: 'Josefin Sans', sans-serif;
   font-weight: 400;
 }
 
-.testimony::before, .testimony::after {
+.testimony::before,
+.testimony::after {
   content: '"';
 }
 

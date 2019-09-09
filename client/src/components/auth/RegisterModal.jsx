@@ -18,7 +18,7 @@ import PropTypes from 'prop-types';
 import { register } from '../../actions/authActions';
 import { clearErrors } from '../../actions/errorActions';
 
-import welcomeImg from '../images/welcomeBG2.jpg';
+import registerImage from '../images/registerImage.svg';
 
 import { inputField } from '../../css/input.module.css';
 import { modalForm } from '../../css/modal-bg.module.css';
@@ -86,70 +86,72 @@ class RegisterModal extends Component {
     }
 
     render() {
-        return (<div>
-            <NavLink onClick={this.toggle} href="#" className={link}>
-                Register
+        return (
+            <div>
+                <NavLink onClick={this.toggle} href="#" className={link}>
+                    Register
             </NavLink>
 
-            <Modal
-                isOpen={this.state.modal}
-                toggle={this.toggle}
-                className="modal-xl"
-            >
-                <ModalBody className="p-0">
-                    <Container fluid={true} className="p-0">
-                        <Row noGutters={true}>
-                            <Col lg="8">
-                                <img className="w-100 img-fluid" src={welcomeImg} alt="STONKS"></img>
-                            </Col>
-                            <Col lg="4" className={modalForm + " px-3"}>
-                                <ModalHeader toggle={this.toggle} className={modalForm}>Register</ModalHeader>
+                <Modal
+                    isOpen={this.state.modal}
+                    toggle={this.toggle}
+                    className="modal-xl"
+                >
+                    <ModalBody className="p-0">
+                        <Container fluid={true} className="p-0">
+                            <Row noGutters={true}>
+                                <Col lg="8">
+                                    <img className="w-100 img-fluid" src={registerImage} alt="STONKS"></img>
+                                </Col>
+                                <Col lg="4" className={modalForm + " px-3"}>
+                                    <ModalHeader toggle={this.toggle} className={modalForm}>Register</ModalHeader>
 
-                                {this.state.msg ? <Alert color="danger">{this.state.msg}</Alert> : null}
+                                    {this.state.msg ? <Alert color="danger">{this.state.msg}</Alert> : null}
 
-                                <Form onSubmit={this.onSubmit}>
-                                    <FormGroup className="p-3">
-                                        <Label for="username" style={{ marginTop: '1rem' }}>Username</Label>
-                                        <input
-                                            type="text"
-                                            name="username"
-                                            id="username"
-                                            placeholder="Give a username"
-                                            onChange={this.onChange}
-                                            className={inputField + " w-100"}
-                                        />
-                                        <Label for="email" style={{ marginTop: '1rem' }}>Email</Label>
-                                        <input
-                                            type="text"
-                                            name="email"
-                                            id="email"
-                                            placeholder="Give a email"
-                                            onChange={this.onChange}
-                                            className={inputField + " w-100"}
-                                        />
-                                        <Label for="password" style={{ marginTop: '1rem' }}>Password</Label>
-                                        <input
-                                            type="password"
-                                            name="password"
-                                            id="password"
-                                            placeholder="Give a password"
-                                            onChange={this.onChange}
-                                            className={inputField + " w-100"}
-                                        />
-                                        <Button
-                                            color="dark"
-                                            style={{ marginTop: '2rem' }}
-                                            block
-                                        >Register</Button>
-                                    </FormGroup>
-                                </Form>
-                            </Col>
-                        </Row>
-                    </Container>
+                                    <Form onSubmit={this.onSubmit}>
+                                        <FormGroup className="p-3">
+                                            <Label for="username" style={{ marginTop: '1rem' }}>Username</Label>
+                                            <input
+                                                type="text"
+                                                name="username"
+                                                id="username"
+                                                placeholder="AmazingUsername"
+                                                onChange={this.onChange}
+                                                className={inputField + " w-100"}
+                                            />
+                                            <Label for="email" style={{ marginTop: '1rem' }}>Email</Label>
+                                            <input
+                                                type="text"
+                                                name="email"
+                                                id="email"
+                                                placeholder="Email@Awesome.com"
+                                                onChange={this.onChange}
+                                                className={inputField + " w-100"}
+                                            />
+                                            <Label for="password" style={{ marginTop: '1rem' }}>Password</Label>
+                                            <input
+                                                type="password"
+                                                name="password"
+                                                id="password"
+                                                placeholder="Secret Password"
+                                                onChange={this.onChange}
+                                                className={inputField + " w-100"}
+                                            />
+                                            <Button
+                                                color="dark"
+                                                style={{ marginTop: '2rem' }}
+                                                block
+                                            >Register</Button>
+                                        </FormGroup>
+                                    </Form>
+                                </Col>
+                            </Row>
+                        </Container>
 
-                </ModalBody>
-            </Modal>
-        </div>);
+                    </ModalBody>
+                </Modal>
+            </div>
+        );
     }
 }
 

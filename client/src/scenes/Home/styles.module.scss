@@ -1,67 +1,29 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans|Roboto&display=swap');
 
-// .heroContainer {
-//     min-height: 500px;
-//     width: 100%;
-//     background:linear-gradient(0deg, rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.8)),url(https://images.pexels.com/photos/534216/pexels-photo-534216.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260);
-//     background-size:cover;
-//     padding-top: calc(500px / 3);
-//     padding-left: calc(100% / 7);
-// }
-
-// .heroTitle {
-//     color: #ecf0f1;
-//     font-size: 36px;
-//     font-weight: 700;
-//     font-family: 'Open Sans', sans-serif;
-
-// }
-
-// .heroCaption {
-//     color: #7f8c8d;
-//     font-size: 16px;
-//     font-weight: 700;
-//     font-family: 'Open Sans', sans-serif;
-// }
-
 
 // ------------------- Hero2
-.heroContainer {
-    min-height: 600px;
-    width: 100%;
-    position: relative;
-    background: url(https://images.pexels.com/photos/839465/pexels-photo-839465.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
-    background-size: cover;
-    background-position: center;
-    padding-top: calc(500px / 2.5);
-}
-
-.overlayTint {
-        z-index: 1;
-        height: 100%;
-        width: 100%;
-        position: absolute;
-        overflow: auto;
-        top: 0px;
-        left: 0px;
-        background: rgba(0, 0, 0, 0.4);
-        // background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);
-}
-
 .heroText {
-    font-size: 3.5em;
-    font-weight: 700;
-    font-family: 'Open Sans', sans-serif;
-    color: #f5f6fa;
-    z-index: 100;
     width: 100%;
-    position: absolute;
-    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 40px;
+    margin: 2rem 0;
+}
+
+.heroInfoText {
+    width: 100%;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 18px;
+}
+
+.heroImage {
+    object-fit: contain;
+    max-width: 80%;
 }
 
 
 // Info Cards
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans:400,700|Raleway&display=swap');
+
 .overviewTitle {
     font-family: 'Raleway', sans-serif;
     font-size: 32px;
@@ -99,7 +61,7 @@
     right: 25%;
 }
 
-.overviewExtraLines::before{
+.overviewExtraLines::before {
     content: '';
     height: 1px;
     width: 37px;
@@ -109,7 +71,7 @@
     left: 20%;
 }
 
-.overviewExtraLines::after{
+.overviewExtraLines::after {
     content: '';
     height: 1px;
     width: 100px;
@@ -157,7 +119,7 @@
 }
 
 
-.overviewExtraLines2::before{
+.overviewExtraLines2::before {
     content: '';
     height: 1px;
     width: 37px;
@@ -167,7 +129,7 @@
     right: 5%;
 }
 
-.overviewExtraLines2::after{
+.overviewExtraLines2::after {
     content: '';
     height: 1px;
     width: 104px;
@@ -207,13 +169,15 @@
     z-index: -1;
 }
 
-.testimony, .testimonyName {
+.testimony,
+.testimonyName {
     text-align: center;
     font-family: 'Josefin Sans', sans-serif;
     font-weight: 400;
 }
 
-.testimony::before, .testimony::after {
+.testimony::before,
+.testimony::after {
     content: '"';
 }
 
@@ -243,4 +207,3 @@
     color: white;
     height: 200px;
 }
-

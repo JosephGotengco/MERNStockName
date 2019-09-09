@@ -1,10 +1,17 @@
-@import url("https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono&display=swap");
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Roboto&display=swap');
 
 .wrapper {
   border-radius: 20px;
 }
 
+.loginText {
+  font-family: 'Open Sans', sans-serif;
+  width: 100%;
+  text-align: center;
+  font-size: 24px;
+  margin-top: 2rem;
+}
+
 .loginImage {
-  background-image: url("https://image.freepik.com/free-vector/creation-responsive-internet-website-multiple-platforms-building-mobile-interface-screen-laptop_119244-43.jpg");
-  min-height: 300px;
+  height: 400px;
 }
