@@ -1,7 +1,7 @@
 # STOCK NAME MERN
 A Stock Trading Web Application built with the MERN Stack!
 
-[![StockNameMERN](https://drive.google.com/file/d/13r6MdbhuPgBFhKkj_u3jAfLbgD5eO3aH/view?usp=sharing)](https://stock-name.herokuapp.com/)
+[![image](https://drive.google.com/uc?export=view&id=13r6MdbhuPgBFhKkj_u3jAfLbgD5eO3aH)](https://stock-name.herokuapp.com)
 
 ## Getting Started
 1. Download project
