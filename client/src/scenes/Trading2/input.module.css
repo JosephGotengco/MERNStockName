@@ -1,0 +1,67 @@
+.inputWrapper {
+  margin: 15px 0;
+}
+
+.fieldWrapper {
+  position: relative;
+  width: 150px;
+  height: 30px;
+}
+
+.input {
+  height: 100%;
+  width: 100%;
+  border: none;
+  color: #434B49;
+  background-color: #E9E6FF;
+  font-family: 'Roboto Mono', monospace;
+  padding-left: 10px;
+  border-radius: 3px;
+  appearance: none;
+}
+
+.inputIcon {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+  width: 25px;
+  right: 5%;
+  top: 10%;
+}
+
+.fieldLabel {
+  position: absolute;
+  color: #434B49;
+}
+
+
+.fieldWrapper label,
+.fieldWrapper select+label,
+.fieldWrapper input:empty+label {
+  top: 10%;
+  left: 6%;
+  cursor: text;
+  pointer-events: none;
+}
+
+.fieldWrapper label,
+.fieldWrapper input,
+.fieldWrapper select {
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+}
+
+.fieldWrapper input:focus+label,
+.fieldWrapper input:valid+label,
+.fieldWrapper select:focus+label,
+.fieldWrapper select:valid+label {
+  top: -50%;
+  left: 2%;
+  letter-spacing: 1px;
+  height: 20px;
+  padding: 0 5px;
+  font-size: 12px;
+  cursor: default;
+}

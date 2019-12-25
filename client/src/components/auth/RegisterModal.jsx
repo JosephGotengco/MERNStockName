@@ -1,28 +1,30 @@
 import React, { Component } from 'react';
 import {
-    Button,
     Modal,
-    ModalHeader,
     ModalBody,
-    Form,
-    FormGroup,
-    Label,
     NavLink,
     Alert,
-    Container,
+    Col,
     Row,
-    Col
+    Container,
 } from 'reactstrap';
+
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { register } from '../../actions/authActions';
 import { clearErrors } from '../../actions/errorActions';
+import { ReactComponent as RegisterImage } from './RegisterImage.svg';
+import { ReactComponent as LoginBG } from './LoginBG.svg';
 
-import registerImage from '../images/registerImage.svg';
+import { link } from '../../css/navbar.module.css';
+import {
+    companyName, loginImageCol, closeButtonWrapper, loginImage, loginImageWrapper,
+    loginTitle,  inputLabel, registerInputWrapper, companyNameWrapper,
+    registerInput, logInButtonWrapper, logInButton, logInButtonContainer, loginBG, errMsg, errMsgHidden,
+    // signUpText, signUpLink,
+} from './LoginModal.module.css';
+import Close from "@material-ui/icons/Close";
 
-import { inputField } from '../../css/input.module.css';
-import { modalForm } from '../../css/modal-bg.module.css';
-import { link } from '../../css/navbar.module.css'
 
 class RegisterModal extends Component {
     state = {
@@ -31,7 +33,7 @@ class RegisterModal extends Component {
         email: '',
         password: '',
         msg: null
-    }
+    };
 
     static propTypes = {
         isAuthenticated: PropTypes.bool,
@@ -43,9 +45,10 @@ class RegisterModal extends Component {
     componentDidUpdate(prevProps) {
         const { error, isAuthenticated } = this.props;
         if (error !== prevProps.error) {
-            // Check for register error
+            console.log(error)
+            // Check for login error
             if (error.id === 'REGISTER_FAIL') {
-                this.setState({ msg: error.msg.msg });
+                this.setState({ msg: error.msg });
             } else {
                 this.setState({ msg: null })
             }
@@ -74,23 +77,21 @@ class RegisterModal extends Component {
 
     onSubmit = e => {
         e.preventDefault();
-
         const { username, email, password } = this.state;
-
-        const newUser = {
+        const user = {
             username,
             email,
             password
         }
-        this.props.register(newUser);
+        this.props.register(user);
     }
 
     render() {
         return (
             <div>
                 <NavLink onClick={this.toggle} href="#" className={link}>
-                    Register
-            </NavLink>
+                    Sign Up
+                </NavLink>
 
                 <Modal
                     isOpen={this.state.modal}
@@ -100,50 +101,55 @@ class RegisterModal extends Component {
                     <ModalBody className="p-0">
                         <Container fluid={true} className="p-0">
                             <Row noGutters={true}>
-                                <Col lg="8">
-                                    <img className="w-100 img-fluid" src={registerImage} alt="STONKS"></img>
+                                <Col xs={6} className={loginImageCol}>
+                                    <LoginBG className={loginBG} />
+                                    <div className={companyNameWrapper}>
+                                        <div className={companyName}>
+                                            STOCK NAME
+                                        </div>
+                                    </div>
+                                    <div className={loginImageWrapper}>
+                                        <RegisterImage className={loginImage} />
+                                    </div>
                                 </Col>
-                                <Col lg="4" className={modalForm + " px-3"}>
-                                    <ModalHeader toggle={this.toggle} className={modalForm}>Register</ModalHeader>
-
-                                    {this.state.msg ? <Alert color="danger">{this.state.msg}</Alert> : null}
-
-                                    <Form onSubmit={this.onSubmit}>
-                                        <FormGroup className="p-3">
-                                            <Label for="username" style={{ marginTop: '1rem' }}>Username</Label>
-                                            <input
-                                                type="text"
-                                                name="username"
-                                                id="username"
-                                                placeholder="AmazingUsername"
-                                                onChange={this.onChange}
-                                                className={inputField + " w-100"}
-                                            />
-                                            <Label for="email" style={{ marginTop: '1rem' }}>Email</Label>
-                                            <input
-                                                type="text"
-                                                name="email"
-                                                id="email"
-                                                placeholder="Email@Awesome.com"
-                                                onChange={this.onChange}
-                                                className={inputField + " w-100"}
-                                            />
-                                            <Label for="password" style={{ marginTop: '1rem' }}>Password</Label>
-                                            <input
-                                                type="password"
-                                                name="password"
-                                                id="password"
-                                                placeholder="Secret Password"
-                                                onChange={this.onChange}
-                                                className={inputField + " w-100"}
-                                            />
-                                            <Button
-                                                color="dark"
-                                                style={{ marginTop: '2rem' }}
-                                                block
-                                            >Register</Button>
-                                        </FormGroup>
-                                    </Form>
+                                <Col xs={12} xl={6}>
+                                    <div className={closeButtonWrapper}>
+                                        <Close onClick={this.toggle} style={{ fontSize: 36 }} />
+                                    </div>
+                                    <div className={loginTitle}>Sign up for an account</div>
+                                    {/* <div className={signUpText}>Already have an account?<div className={signUpLink}>Log In</div></div> */}
+                                    <form>
+                                        <div className={registerInputWrapper}>
+                                            <div className={inputLabel}>USERNAME</div>
+                                            <input className={registerInput} placeholder={"Enter your username"}
+                                                name={"username"} type={"username"} onChange={this.onChange} />
+                                        </div>
+                                        <div className={registerInputWrapper}>
+                                            <div className={inputLabel}>EMAIL ADDRESS</div>
+                                            <input className={registerInput} placeholder={"Enter your email"}
+                                                name={"email"} type={"email"} onChange={this.onChange} />
+                                        </div>
+                                        <div className={registerInputWrapper}>
+                                            <div className={inputLabel}>PASSWORD</div>
+                                            <input className={registerInput} placeholder={"Enter your password  "}
+                                                name={"password"} type={"password"} onChange={this.onChange}
+                                                autoComplete="off" />
+                                        </div>
+                                        <div className={registerInputWrapper}>
+                                            <div className={inputLabel}>CONFIRM PASSWORD</div>
+                                            <input className={registerInput} placeholder={"Enter your password again "}
+                                                name={"confirmPassword"} type={"confirmPassword"} onChange={this.onChange}
+                                                autoComplete="off" />
+                                        </div>
+                                    </form>
+                                    {this.state.msg ? <Alert color="danger" className={errMsg}>{this.state.msg}</Alert> : <Alert color="danger" className={errMsgHidden}>Nothing Here!</Alert>}
+                                    <div className={logInButtonContainer}>
+                                        <div className={logInButtonWrapper} onClick={this.onSubmit}>
+                                            <div className={logInButton}>
+                                                Sign Up
+                                            </div>
+                                        </div>
+                                    </div>
                                 </Col>
                             </Row>
                         </Container>

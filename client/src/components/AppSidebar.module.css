@@ -1,0 +1,83 @@
+.sidebarWrapper {
+    background-color: #333333;
+    min-height: 100vh;
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s;
+}
+
+
+.title {
+    -webkit-box-ordinal-group: 3;
+    -ms-flex-order: 2;
+    order: 2;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: left;
+    -ms-flex-pack: left;
+    justify-content: left;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 90%;
+    -webkit-transition: width 1s;
+    transition: width 1s;
+    color: #FFFDDF;
+    font-family: 'Roboto Mono', monospace;
+    text-decoration: none;
+    font-size: calc(10px + 6 * ((100vw - 360px) / 900));
+    transition: width 1s;
+}
+
+.sidenavLink {
+    margin: 1em 0;
+    padding: 10px;
+    font-size: 1.1em;
+    height: 40px;
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: left;
+    -ms-flex-pack: left;
+    justify-content: left;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    overflow: hidden;
+    color: #ffffff;
+}
+
+.linkText {
+    margin-left: 10px;
+    -webkit-box-ordinal-group: 3;
+    -ms-flex-order: 2;
+    order: 2;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: left;
+    -ms-flex-pack: left;
+    justify-content: left;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 90%;
+    -webkit-transition: width 1s;
+    transition: width 1s;
+}
+
+.sidenavLink:hover,
+.title:hover {
+    color: #7f8fa6;
+    text-decoration: none;
+}
+
+.linkIcon {
+    width: 10%;
+}
+

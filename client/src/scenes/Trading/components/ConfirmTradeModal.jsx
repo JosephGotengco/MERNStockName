@@ -15,26 +15,29 @@ class ConfirmTradeModal extends Component {
     costPerTicker: 0
   };
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
     const { ticker } = this.props;
+    if (prevProps.ticker !== ticker) {
 
-    const baseURL = "https://cloud.iexapis.com";
-    const apiToken = "pk_5187144627fe41f783caf3f0341d7f3e";
+      const baseURL = "https://cloud.iexapis.com";
+      const apiToken = "pk_5187144627fe41f783caf3f0341d7f3e";
 
-    if (ticker) {
-      axios
-        .get(`${baseURL}/stable/stock/${ticker}/previous?token=${apiToken}`)
-        .then(
-          res => {
-            this.setState({
-              costPerTicker: res.data.close
-            });
-          },
-          err => {
-            console.log(err);
-          }
-        );
+      if (ticker) {
+        axios
+          .get(`${baseURL}/stable/stock/${ticker}/previous?token=${apiToken}`)
+          .then(
+            res => {
+              this.setState({
+                costPerTicker: res.data.close
+              });
+            },
+            err => {
+              console.log(err);
+            }
+          );
+      }
     }
+
   }
 
   toggle = () => {
@@ -44,12 +47,12 @@ class ConfirmTradeModal extends Component {
   };
 
   onTrade = () => {
-    const { ticker, prices, shares, orderType } = this.props;
-    this.props.handleTrade(ticker, prices, shares, orderType);
+    const { ticker, prices, qty, orderType } = this.props;
+    this.props.handleTrade(ticker, prices, qty, orderType);
   };
 
   render() {
-    const { ticker, orderType, shares, price, buttonClass } = this.props;
+    const { ticker, orderType, qty, price, buttonClass } = this.props;
     const { costPerTicker } = this.state;
 
     const priceLine = (
@@ -85,14 +88,14 @@ class ConfirmTradeModal extends Component {
               <span className="data">{orderType}</span>
             </div>
             <div style={{ overflowX: "hidden" }}>
-              <span className="label">Shares</span>
-              <span className="data">{shares}</span>
+              <span className="label">Quantity</span>
+              <span className="data">{qty}</span>
             </div>
             {price ? priceLine : null}
 
             <div className="total-wrapper">
               <span className="total-label">Total</span>$
-              {shares * costPerTicker}
+              {qty * costPerTicker}
             </div>
 
             <div className="button-wrapper">

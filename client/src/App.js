@@ -10,9 +10,10 @@ import { createBrowserHistory } from 'history';
 import "bootstrap/dist/css/bootstrap.min.css";
 
 // Scenes
-import Home from "./scenes/Home";
+import Home2 from "./scenes/Home2";
 import Error404 from "./scenes/Error404";
-import Trading from "./scenes/Trading";
+import Trading from "./scenes/Trading2";
+import Dashboard from "./scenes/Dashboard";
 import Admin from "./scenes/Admin";
 
 export const history = createBrowserHistory();
@@ -38,8 +39,9 @@ class App extends Component {
           <div className="App">
             <Router history={history}>
               <Switch>
-                <Route exact path="/" component={Home} />
+                <Route exact path="/" component={Home2} />
                 <Route exact path="/trading" component={Trading} />
+                <Route exact path="/dashboard" component={Dashboard} />
                 <Route exact path="/admin" component={Admin} />
                 <Route exact path="*" component={Error404} />
               </Switch>

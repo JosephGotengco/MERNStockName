@@ -8,18 +8,20 @@ const User = require("../../models/User");
 // @route   POST api/trade
 // @desc    Send Buy Request
 // @access  Private
-router.post("/", isLoggedIn, async(req, res) => {
-    const { orderType, ticker } = req.body;
+router.post("/", isLoggedIn, async (req, res) => {
+    let { orderType, ticker } = req.body;
+    ticker = ticker.toUpperCase();
     const qty = parseInt(req.body['qty']);
     const orderTypes = config.get("orderTypes");
     const token = config.get("IEXCloudToken");
+    console.log(req.session);
 
     // if qty is below 0 or above 100, return bad req
     if (qty < 1 || 100 < qty) return res.status(400).json({ msg: "Purchase quantity must be between 1 and 100" });
     if (!Number.isInteger(qty)) return res.status(400).json({ msg: "Purchase quantity must be an integer" });
     // if invalid order type, return bad req
     if (!orderTypes.includes(orderType)) return res.status(400).json({ msg: "Invalid order type" });
-    
+
     if (orderType === 'market') {
         // 1. Call IEX cloud
         // 2. Check Balance, etc.
@@ -29,7 +31,7 @@ router.post("/", isLoggedIn, async(req, res) => {
             const { close } = axiosRes.data;
             let user = await User.findById(req.user._id);
             const { balance, stocks } = user;
-            if ( balance < close * qty ) return res.status(400).json({ msg: "You do not have enough money for this purchase" });
+            if (balance < close * qty) return res.status(400).json({ msg: "You do not have enough money for this purchase" });
             var existingStock = stocks.filter(obj => {
                 return obj.ticker === ticker
             });
@@ -39,32 +41,35 @@ router.post("/", isLoggedIn, async(req, res) => {
                 let newBalance = balance - close * qty;
                 let i = stocks.indexOf(existingStock[0]);
                 stocks.splice(i, 1);
-                stocks.push({ ticker, qty: newQty});
+                stocks.push({ ticker, qty: newQty });
                 let result = await User.updateOne(
                     { _id: req.user._id },
-                    { $set: { 
-                        balance: newBalance,
-                        stocks: stocks
+                    {
+                        $set: {
+                            balance: newBalance,
+                            stocks: stocks
                         }
                     }
                 );
-                console.log(`result: ${result}`);
-                res.status(200).json({ msg: "Purchase successful", ticker, qty: newQty, balance: newBalance })
+                user = await User.findById(req.user._id);
+                req.session.passport.user = user;
+                res.status(200).json({ msg: "Purchase successful", stocks, balance: newBalance })
             } else {
                 let newBalance = balance - close * qty;
                 stocks.push({ ticker, qty });
                 await User.updateOne(
                     { _id: req.user._id },
-                    { $set: { 
-                        balance: newBalance,                     
-                        stocks: stocks
-                        } 
+                    {
+                        $set: {
+                            balance: newBalance,
+                            stocks: stocks
+                        }
                     }
                 );
-                res.status(200).json({ msg: "Purchase successful", ticker, qty, balance: newBalance });
+                res.status(200).json({ msg: "Purchase successful", stocks, balance: newBalance });
             }
-        } catch(e) {
-            console.log(e);
+        } catch (e) {
+            // console.log(e);
             let errMsg = e.response.data;
             if (errMsg === "The API key provided is not valid.") return res.status(500).json({ msg: "Oops...a server error occured and your purchase was not completed" })
             if (errMsg === 'Unknown symbol') return res.status(400).json({ msg: "Invalid ticker" });
@@ -80,24 +85,25 @@ router.post("/", isLoggedIn, async(req, res) => {
 
         // new Watchlist Object = nWO = im lazy
         let nWO = {
-                ticker,
-                qty,
-                price,
-                orderType,
-                dateCreated: Date.now()
-            }
+            ticker,
+            qty,
+            price,
+            orderType,
+            dateCreated: Date.now()
+        }
 
         // existing Watchlist Object = eWO = im lazy
         var eWO = watchlist.filter(obj => {
             return obj.ticker === ticker
         });
-        
+
         watchlist.push(nWO);
         await User.updateOne(
             { _id: req.user._id },
-            { $set: {
-                watchlist
-                } 
+            {
+                $set: {
+                    watchlist
+                }
             }
         );
         res.status(200).json({ msg: "Order placed", ticker, qty, price, orderType, dateCreated: nWO.dateCreated });
@@ -107,7 +113,7 @@ router.post("/", isLoggedIn, async(req, res) => {
 // @route   POST api/trade/sell
 // @desc    Send Sell Request
 // @access  Private
-router.post("/sell", async(req, res) => {
+router.post("/sell", async (req, res) => {
     const { ticker } = req.body;
     const qty = parseInt(req.body['qty']);
     const token = config.get("IEXCloudToken");
@@ -117,12 +123,12 @@ router.post("/sell", async(req, res) => {
     try {
         let user = await User.findById(req.user._id);
         let index = null;
-        for (let i = 0; i < user.stocks.length; i ++) {
+        for (let i = 0; i < user.stocks.length; i++) {
             if (user.stocks[i].ticker.toUpperCase() === ticker.toUpperCase()) {
                 index = i;
             };
         }
-        if (index) return res.status(400).json({msg: "You do not own shares of that ticker"});
+        if (index) return res.status(400).json({ msg: "You do not own shares of that ticker" });
 
         let stock = user.stocks[index];
         if (stock.qty < qty) return res.status(400).json({ msg: "You do not own enough shares of that ticker" });
@@ -138,26 +144,27 @@ router.post("/sell", async(req, res) => {
 
         await User.updateOne(
             { _id: req.user._id },
-            { $set: { 
-                balance: newBalance,                     
-                stocks: newStocks
-                } 
+            {
+                $set: {
+                    balance: newBalance,
+                    stocks: newStocks
+                }
             }
         )
 
         res.status(200).json({ msg: "Sale successful", ticker, oldQty: oldQty, soldQty: qty, newQty: stock.qty, balance: newBalance });
 
-    } catch(e) {
+    } catch (e) {
         console.log(e);
     }
 });
 
 function isLoggedIn(req, res, next) {
-	if (req.session.passport !== undefined) {
-		next();
-	} else {
-		res.status(401).json({ msg: "authorization denied" });
-	}
+    if (req.session.passport !== undefined) {
+        next();
+    } else {
+        res.status(401).json({ msg: "authorization denied" });
+    }
 }
 
 module.exports = router;

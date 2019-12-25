@@ -29,7 +29,12 @@ export const getGraphData = (ticker, graphPeriod) => dispatch => {
     .then(
       res => {
         res.data.map(dataPoint => {
-          graphLabels.push(dataPoint.label);
+          let label = dataPoint.label.split(' ');
+          let temp = label[0];
+          label[0] = label[1];
+          label[1] = temp;
+          let newLabel = label.join(' ');
+          graphLabels.push(newLabel);
           graphData.push(dataPoint.close);
           return null;
         });
@@ -61,65 +66,54 @@ export const changeGraphPeriod = graphPeriod => dispatch => {
   dispatch({ type: RETURN_GRAPH_PERIOD, payload: graphPeriod });
 };
 
-export const handleTickerSearch = ticker => (dispatch, getState) => {
-  if (!ticker) {
-    dispatch({
-      type: GRAPH_ERROR,
-      payload: `Search bar is blank`
-    });
-  } else {
-    dispatch({ type: LOADING_GRAPH_DATA });
+export const handleTickerSearch = ticker => {
+  return (dispatch, getState) => {
+    if (!ticker) {
+      dispatch({
+        type: GRAPH_ERROR,
+        payload: `Search bar is blank`
+      });
+      return new Promise((resolve, reject) => {})
 
-    const { graphPeriod } = getState().trading;
+    } else {
+      dispatch({ type: LOADING_GRAPH_DATA });
 
-    Promise.all([
-      axios.get(
-        `${baseURL}/stable/stock/${ticker}/chart/${graphPeriod}?token=${apiToken}`
-      ),
-      axios.get(
-        `${baseURL}/stable/stock/${ticker}/stats/beta?token=${apiToken}`
-      ),
-      axios.get(`${baseURL}/stable/stock/${ticker}/quote?token=${apiToken}`)
-    ]).then(
-      res => {
-        // Graph
-        let graphLabels = [];
-        let graphData = [];
-        let graphTitle = `${ticker} Price`;
+      const { graphPeriod } = getState().graph;
 
-        // res 0 - graph data
-        res[0].data.map(dataPoint => {
-          graphLabels.push(dataPoint.label);
-          graphData.push(dataPoint.close);
-          return null;
-        });
+      return Promise.all([
+        axios.get(
+          `${baseURL}/stable/stock/${ticker}/chart/${graphPeriod}?token=${apiToken}`
+        ),
+        axios.get(
+          `${baseURL}/stable/stock/${ticker}/stats/beta?token=${apiToken}`
+        ),
+        axios.get(`${baseURL}/stable/stock/${ticker}/quote?token=${apiToken}`)
+      ]).then(
+        res => {
+          // Graph
+          let graphLabels = [];
+          let graphData = [];
+          let graphTitle = `${ticker} Price`;
 
-        let currentPrice = graphData[graphData.length - 1];
+          // res 0 - graph data
+          res[0].data.map(dataPoint => {
+            let label = dataPoint.label.split(' ');
+            if (label[1].length === 1) {
+              label[1] = '0' + label[1];
+            }
+            let newLabel = label.join(' ');
+            graphLabels.push(newLabel);
+            graphData.push(dataPoint.close);
+            return null;
+          });
 
-        // res 1 - beta
-        let beta = res[1];
+          let currentPrice = graphData[graphData.length - 1];
 
-        // res 2 - companyName, peRatio, ohlc, change
-        let {
-          companyName,
-          peRatio,
-          open,
-          high,
-          low,
-          close,
-          change,
-          changePercent
-        } = res[2].data;
-        dispatch({ type: CLEAR_SEARCH_ERROR });
-        dispatch({
-          type: LOADED_GRAPH_DATA,
-          payload: {
-            ticker,
-            graphLabels,
-            graphData,
-            graphTitle,
-            currentPrice,
-            beta,
+          // res 1 - beta
+          let beta = res[1];
+
+          // res 2 - companyName, peRatio, ohlc, change
+          let {
             companyName,
             peRatio,
             open,
@@ -128,17 +122,37 @@ export const handleTickerSearch = ticker => (dispatch, getState) => {
             close,
             change,
             changePercent
-          }
-        });
-      },
-      err => {
-        if (err.response.status === 404) {
+          } = res[2].data;
+          dispatch({ type: CLEAR_SEARCH_ERROR });
           dispatch({
-            type: GRAPH_ERROR,
-            payload: `${ticker} is not a valid ticker`
+            type: LOADED_GRAPH_DATA,
+            payload: {
+              ticker,
+              graphLabels,
+              graphData,
+              graphTitle,
+              currentPrice,
+              beta,
+              companyName,
+              peRatio,
+              open,
+              high,
+              low,
+              close,
+              change,
+              changePercent
+            }
           });
+        },
+        err => {
+          if (err.response.status === 404) {
+            dispatch({
+              type: GRAPH_ERROR,
+              payload: `${ticker} is not a valid ticker`
+            });
+          }
         }
-      }
-    );
+      );
+    }
   }
 };

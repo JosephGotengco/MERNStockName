@@ -48,12 +48,12 @@ class AppNavbar extends Component {
                     </span>
                 </NavItem>
                 <NavItem>
-                    <NavLink href="/dashboard" style={(this.props.currentLink === "/dashboard") ? {color: '#f5f6fa'} : null}>
+                    <NavLink href="/dashboard" style={(this.props.currentLink === "/dashboard") ? {color: 'black'} : null}>
                         Dashboard
                     </NavLink>
                 </NavItem>
                 <NavItem>
-                    <NavLink href="/trading" style={(this.props.currentLink === "/trading") ? {color: '#f5f6fa'} : null}>
+                    <NavLink href="/trading" style={(this.props.currentLink === "/trading") ? {color: 'black'} : null}>
                         Trading
                     </NavLink>
                 </NavItem>
@@ -75,7 +75,7 @@ class AppNavbar extends Component {
         )
 
         return (
-            <Navbar className={bgPurple} dark expand="md">
+            <Navbar className={bgPurple} light expand="md">
                     <a href="/" className={title}>
                         STOCK NAME
                     </a>

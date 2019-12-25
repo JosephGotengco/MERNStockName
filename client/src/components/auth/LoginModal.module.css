@@ -1,17 +1,216 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans|Roboto&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,700|Overpass:400,700&display=swap");
 
-.wrapper {
-  border-radius: 20px;
+.loginImageCol {
+  position: relative;
+  /* background-image: url("./LoginBG.svg"); */
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow: hidden;
 }
 
-.loginText {
-  font-family: 'Open Sans', sans-serif;
-  width: 100%;
-  text-align: center;
-  font-size: 24px;
-  margin-top: 2rem;
+@media only screen and (max-width: 1200px) {
+  .loginImageCol {
+    position: relative;
+    /* background-image: url("./LoginBG.svg"); */
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    display: none;
+  }
+
+}
+
+.loginBG {
+  height: 100%;
+  width: auto;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+}
+
+.loginImageWrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70%;
 }
 
 .loginImage {
-  height: 400px;
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.companyNameWrapper {
+  display: flex;
+  justify-content: flex-start;
+  position: relative;
+  height: 40px;
+  width: 100%;
+  align-items: center;
+  z-index: 1;
+  padding: 10%;
+}
+
+.companyName {
+  font-family: Overpass;
+  font-weight: bold;
+  color: #f2f2f2;
+  font-size: calc(14px + 6 * ((100vw - 360px) / 900));
+}
+
+.closeButtonWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 3.5%;
+}
+
+.loginTitle {
+  font-family: Overpass;
+  font-style: normal;
+  font-weight: bold;
+  font-size: calc(16px + 8 * ((100vw - 360px) / 900));
+  text-align: center;
+  color: #000000;
+}
+
+.signUpText {
+  font-family: Overpass;
+  font-style: normal;
+  font-weight: bold;
+  font-size: calc(8px + 4 * ((100vw - 360px) / 900));
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  color: #bdbdbd;
+}
+
+.signUpLink {
+  font-family: Overpass;
+  font-style: normal;
+  font-weight: bold;
+  font-size: calc(8px + 4 * ((100vw - 360px) / 900));
+  display: flex;
+  align-items: center;
+  color: #2d9cdb;
+  padding-left: 10px;
+}
+
+.inputWrapper {
+  width: 100%;
+  padding-left: 17%;
+  margin: 10% 0;
+}
+
+.registerInputWrapper {
+  width: 100%;
+  padding-left: 17%;
+  margin: 5% 0;
+}
+
+.inputLabel {
+  font-family: Overpass;
+  font-style: normal;
+  font-weight: bold;
+  font-size: calc(10px + 6 * ((100vw - 360px) / 900));
+  line-height: 28px;
+  color: #000000;
+}
+
+.registerInput {
+  width: 85%;
+  background: #f2f2f2;
+  border-radius: 5px;
+  border: none;
+  max-height: 1.5em;
+  padding: 5.5% 1em;
+}
+
+.registerInput::placeholder {
+  font-family: Overpass;
+  font-style: normal;
+  font-weight: bold;
+  font-size: calc(8px + 6 * ((100vw - 360px) / 900));
+  display: flex;
+  align-items: center;
+  color: #bdbdbd;
+}
+
+.input {
+  width: 85%;
+  background: #f2f2f2;
+  border-radius: 5px;
+  border: none;
+  max-height: 1.5em;
+  padding: 7.5% 1em;
+}
+
+.input::placeholder {
+  font-family: Overpass;
+  font-style: normal;
+  font-weight: bold;
+  font-size: calc(8px + 6 * ((100vw - 360px) / 900));
+  display: flex;
+  align-items: center;
+  color: #bdbdbd;
+}
+
+.logInButtonContainer {
+  width: 100%;
+  padding-left: 17.5%;
+  padding-bottom: 10%;
+}
+
+.logInButtonWrapper {
+  background-color: #3f3d56;
+  max-width: 25%;
+  min-width: 3rem;
+
+  padding: 2% 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.logInButton {
+  font-family: Overpass;
+  font-style: normal;
+  font-weight: bold;
+  font-size: calc(10px + 6 * ((100vw - 360px) / 900));
+  color: #f2f2f2;
+}
+
+.errMsg {
+  font-family: Overpass;
+  font-style: normal;
+  font-weight: bold;
+  font-size: calc(8px + 4 * ((100vw - 360px) / 900));
+  display: flex;
+  justify-content: center;
+  width: 65%;
+  margin: 10% auto;
+}
+
+.errMsgHidden {
+  /* Used so login background image doesn't resize to height change */
+  font-family: Overpass;
+  font-style: normal;
+  font-weight: bold;
+  font-size: calc(8px + 4 * ((100vw - 360px) / 900));
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 10% auto;
+  visibility: hidden;
+  display: none;
 }

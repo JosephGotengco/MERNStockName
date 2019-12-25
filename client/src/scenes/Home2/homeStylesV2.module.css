@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700|Overpass:400,700&display=swap');
+
+body {
+    background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+}
+
+.pageWrapper {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.contentContainer {
+    padding-top: 3%;
+}
+
+/* Hero styles starts here */
+.heroRow {
+    padding: 0 5%;
+    min-height: 75vh;
+}
+
+.heroTitleContainer {
+    display: flex;
+    justify-content: center;
+    padding-top: 10vh;
+}
+
+.heroTitle {
+    font-family: Overpass;
+    font-style: normal;
+    font-weight: bold;
+    font-size: calc(34px + 26 * ((100vw - 360px) / 900));
+    color: #000000;
+    z-index: 1;
+}
+
+.heroImage {
+    width: 100%;
+    max-width: 488px;
+    height: auto;
+    z-index: 1;
+}
+
+.line {
+    position: absolute;
+    top: 36vh;
+    left: 0;
+    width: 100%;
+    height: auto;
+}
+
+/* Hero styles ends here */
+
+/* Perk styles starts here */
+.perkRow {
+    background-color: #3F3D56;
+    padding: 5%;
+}
+
+.perkTitle {
+    font-family: Overpass;
+    font-weight: bold;
+    color: #F2F2F2;
+    font-size: calc(34px + 26 * ((100vw - 360px) / 900));
+    text-align: center;
+}
+
+.perkWrapper {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    padding-top: 10%;
+    flex-direction: column;
+    color: #BDBDBD;
+    font-size: calc(18px + (20 - 18) * ((100vw - 300px) / (1600 - 300)));
+    font-family: Montserrat;
+
+}
+
+
+/* Perk styles ends here */
+
+/* Attention styles starts here */
+.attnTitle {
+    padding-top: 5%;
+    font-family: Overpass;
+    font-weight: bold;
+    color: #EB5757;
+    font-size: calc(34px + 26 * ((100vw - 360px) / 900));
+    text-align: center;
+}
+
+.attnMsgCol {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 5%;
+}
+
+.attnMsg {
+    font-family: Montserrat;
+    text-align: center;
+    font-size: calc(16px + (20 - 16) * ((100vw - 300px) / (1600 - 300)));
+    width: 65%;
+}
+
+/* Attention styles ends here */
+
+/* Improving styles starts here */
+.devImageCol {
+    text-align: center;
+    padding: 5%;
+}
+
+.devImage {
+    width: 50%;
+    height: auto;
+    float: left;
+    margin-right: 5%;
+}
+
+.improvingTitle {
+    color: #333333;
+    font-family: Overpass;
+    font-style: normal;
+    font-weight: bold;
+    font-size: calc(28px + 20 * ((100vw - 360px) / 900));
+    width: 100%;
+}
+
+.improvingText {
+    color: #828282;
+    font-family: Overpass;
+    font-style: normal;
+    font-weight: normal;
+    font-size: calc(16px + (20 - 16) * ((100vw - 300px) / (1600 - 300)));
+    line-height: 37px;
+    padding-top: 0%;
+    text-align: center;
+}
+
+@media only screen and (max-width: 600px) {
+    .improvingText {
+        color: #828282;
+        font-family: Overpass;
+        font-style: normal;
+        font-weight: normal;
+        font-size: calc(16px + (20 - 16) * ((100vw - 300px) / (1600 - 300)));
+        line-height: 37px;
+        padding-top: 5%;
+        text-align: center;
+    }
+    
+}
+
+/* Improving styles ends here */

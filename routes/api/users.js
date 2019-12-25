@@ -13,13 +13,13 @@ const User = require("../../models/User");
 router.post("/", (req, res) => {
   const { username, email, password } = req.body;
   // Simple Validation
-  if (!email || !password) {
+  if (!email || !password || !username) {
     return res.status(400).json({ msg: "Please enter all fields" });
   }
 
   // Check for existing user
   User.findOne({ email }).then(user => {
-    if (user) return res.status(400).json({ msg: "User already exists" });
+    if (user) return res.status(400).json({ msg: "A user with that email already exists." });
 
     const newUser = new User({
       username,
@@ -39,11 +39,13 @@ router.post("/", (req, res) => {
             { expiresIn: 3600 },
             (err, token) => {
               if (err) throw err;
+              let { id, balance, registrationDate, stocks,
+                watchlist, hasConfirmedEmail, role, username, email } = user;
               res.json({
                 token,
                 user: {
-                  id: user.id,
-                  username: user.username
+                  id, balance, registrationDate, stocks,
+                  watchlist, hasConfirmedEmail, role, username, email
                 }
               });
             }

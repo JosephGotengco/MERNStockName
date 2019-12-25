@@ -63,12 +63,14 @@ export default function(state = initialState, action) {
     case GRAPH_ERROR:
       return {
         ...state,
-        graphError: action.payload
+        graphError: true,
+        graphErrorMsg: action.payload
       };
     case CLEAR_SEARCH_ERROR:
       return {
         ...state,
-        graphError: ""
+        graphError: false,
+        graphErrorMsg: ""
       };
     default:
       return state;

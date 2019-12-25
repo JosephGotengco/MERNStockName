@@ -1,28 +1,41 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans|Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Numans|Open+Sans:400,700,800|Roboto&display=swap');
 
 .title {
-    color: #ecf0f1;
+    color: #2d3436;
     font-size: 28px;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Numans', sans-serif;
     cursor: pointer;
+    display: flex;
+    flex-direction: row;
+}
+
+.titleHighlight {
+    color: inherit;
+    font-size: inherit;
+    font-family: inherit;
+    cursor: inherit;
+    color: #5352ED;
+    margin-right: 8%;
 }
 
 .title:hover {
-    color: #ecf0f1;
+    color: #2d3436;
     text-decoration: none;
 }
 
 .link {
-    color: #ecf0f1;
+    color: #4F4F4F;
     font-size: 16px;
     font-family: 'Roboto', sans-serif;
     cursor: pointer;
 }
 
 .link:hover {
-    color: #ecf0f1;
+    color: #2d3436;
 }
 
-.bgPurple {
-    background-color: #5352ED;
+.navWrapper {
+    font-family: Numans cursive;
+    padding: 3% 5%;
 }
+

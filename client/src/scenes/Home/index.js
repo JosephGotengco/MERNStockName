@@ -31,10 +31,6 @@ import {
   overviewTitle,
   cardTitle,
   cardBodyText,
-  overviewExtraLines,
-  overviewExtraLines1,
-  overviewExtraLines2,
-  overviewExtraLines3,
   testimony,
   testimonyName,
   activeOption,
@@ -65,32 +61,30 @@ class Home extends Component {
     return (
       <React.Fragment>
         <AppNavbar currentLink={window.location.pathname} />
-        <Container fluid style={{ padding: "10px 20px" }}>
+        <Container fluid className="px-0 mx-0" style={{overflowX: "hidden"}}>
           <Hero />
           <Row style={{ marginTop: "30px" }}>
             <Col xl={{ size: 12 }} className="d-flex justify-content-center" style={{ marginTop: "2rem" }}>
               <h2 className={overviewTitle}>
                 About Stock Name
-                <div className={overviewExtraLines} />
-                <div className={overviewExtraLines1} />
               </h2>
             </Col>
           </Row>
           <Row style={{ marginTop: "30px" }}>
-            <Col xl={{ size: 12 }} className="d-flex justify-content-center">
+            <Col xl={{ size: 12 }} className="d-flex justify-content-center px-4">
               <div className={overviewText}>
                 <div>
                   Stock Name is a stock trading platform for entrepneurs, stock
                   market enthusiasts! <br />
                   It's a free and easy way to invest your money into the stock
                   market.
+                  <br />
+                  <br />
                 </div>
                 <p className="text-danger font-weight-bold">
                   (Warning: This is a paper trading stock trading web
-                  <br />
-                  application developed as a personal project and
-                  <br />
-                  by no means accepts or use real money in anyway.)
+                  application developed as a personal <br /> 
+                  project and by no means accepts or use real money in anyway.)
                 </p>
               </div>
             </Col>
@@ -99,13 +93,11 @@ class Home extends Component {
             <Col xl={{ size: 12 }} className="d-flex justify-content-center" style={{ marginTop: "2rem" }}>
               <h2 className={keyFeaturesTitle}>
                 Key Features
-                <div className={overviewExtraLines2} />
-                <div className={overviewExtraLines3} />
               </h2>
             </Col>
           </Row>
           <Row
-            className="d-flex justify-content-center position-relative"
+            className="d-flex justify-content-center position-relative px-3"
             style={{ marginTop: "30px" }}
           >
             {/* <div className={backgroundBox}></div> */}
@@ -154,8 +146,8 @@ class Home extends Component {
                 <h3 className={cardTitle}>Flexible</h3>
                 <p className={cardBodyText}>
                   Our responsive web design means you can take Stock Name
-                  wherever you go! Or you can download the Stock Name app on the
-                  play store or ios store.
+                  wherever you go! You can download the Stock Name app on the
+                  play store or IOS store. It's as portable as they come!
                 </p>
               </Card>
             </Col>
@@ -198,7 +190,7 @@ class Home extends Component {
               >
                 <TabPane tabId="1">
                   <Row>
-                    <Col xl="12" style={{ padding: "1rem" }}>
+                    <Col xl="12" style={{ padding: "3rem" }}>
                       <div className={testimony}>
                         Stock Name was the best choice I have made in a long
                         time.
@@ -223,7 +215,7 @@ class Home extends Component {
                 </TabPane>
                 <TabPane tabId="2">
                   <Row>
-                    <Col xl="12" style={{ padding: "1rem" }}>
+                    <Col xl="12" style={{ padding: "3rem" }}>
                       <div className={testimony}>
                         When I investing in stocks, I have fun doing it.
                         <br />

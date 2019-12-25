@@ -1,0 +1,39 @@
+.mobile-menu-wrapper {
+    position: fixed;
+    background-color: #333333;
+    z-index: 2;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+    top: 0;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.mobile-menu-wrapper::before {
+    box-sizing: border-box;
+}
+
+.mobile-menu-wrapper::after {
+    box-sizing: border-box;
+}
+
+.headerRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    top: 0;
+    box-sizing: border-box;
+}
+
+.closeButton {
+    color: #ffffff;
+    box-sizing: border-box;
+}
+
+.companyName {
+    font-family: Overpass;
+    font-weight: bold;
+    color: #f2f2f2;
+    font-size: calc(20px + 18 * ((100vw - 360px) / 900));
+}

@@ -1,36 +1,41 @@
-import {
-  PROCESSING_PURCHASE,
-  PROCESSED_PURCHASE,
-  PURCHASE_SUCCESSFUL,
-  PURCHASE_ERROR
-} from "../actions/types";
+import { SET_TRADE_MSG, TRADE_ERROR, TRADE_SUCCESS, SET_ESTIMATED_PRICE, CLEAR_TRADE_ERROR } from "../actions/types";
 
 const initialState = {
-  processingTrade: false
+  tradeError: false,
+  tradeMsg: "",
+  estimatedPrice: 0.00
 };
 
-export default function(state = initialState, action) {
+export default function (state = initialState, action) {
   switch (action.type) {
-    case PROCESSING_PURCHASE:
+    case CLEAR_TRADE_ERROR:
       return {
         ...state,
-        processingTrade: true
-      };
-    case PROCESSED_PURCHASE:
+        tradeError: false,
+        tradeMsg: ""
+      }
+    case TRADE_SUCCESS:
       return {
         ...state,
-        processingTrade: false
-      };
-    case PURCHASE_SUCCESSFUL:
-      var { ticker, qty, balance, msg } = action.payload;
+        tradeError: false,
+        tradeMsg: action.payload
+      }
+    case TRADE_ERROR:
       return {
-        ...state
-      };
-    case PURCHASE_ERROR:
-      var { msg } = action.payload;
+        ...state,
+        tradeError: true,
+        tradeMsg: action.payload
+      }
+    case SET_TRADE_MSG:
       return {
-        ...state
-      };
+        ...state,
+        tradeMsg: action.payload
+      }
+    case SET_ESTIMATED_PRICE:
+      return {
+        ...state,
+        estimatedPrice: action.payload
+      }
     default:
       return state;
   }

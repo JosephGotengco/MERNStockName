@@ -33,7 +33,7 @@ export const loadUser = () => (dispatch) => {
     .catch(err => {
       console.log(err);
       history.push("/");
-      // dispatch(returnErrors(err.response.data, err.response.status));
+      dispatch(returnErrors(err.response.data.msg, err.response.status));
       dispatch({
         type: AUTH_ERROR
       });
@@ -58,15 +58,15 @@ export const register = ({ username, email, password }) => dispatch => {
 
   axios
     .post("/api/users", body, config)
-    .then(res =>
+    .then(res => {
       dispatch({
         type: REGISTER_SUCCESS,
         payload: res.data
-      })
-    )
+      });
+    })
     .catch(err => {
       dispatch(
-        returnErrors(err.response.data, err.response.status, "REGISTER_FAIL")
+        returnErrors(err.response.data.msg, err.response.status, "REGISTER_FAIL")
       );
       dispatch({
         type: REGISTER_FAIL
@@ -106,7 +106,7 @@ export const login = ({ username, password }) => dispatch => {
     })
     .catch(err => {
       dispatch(
-        returnErrors(err.response.data, err.response.status, "LOGIN_FAIL")
+        returnErrors(err.response.data.msg, err.response.status, "LOGIN_FAIL")
       );
       dispatch({
         type: LOGIN_FAIL

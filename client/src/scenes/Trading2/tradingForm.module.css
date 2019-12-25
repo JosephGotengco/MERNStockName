@@ -1,0 +1,134 @@
+.tradeHeader {
+    font-family: Roboto Mono;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 28px;
+    color: #333333;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 15px 0;
+}
+
+.fieldRow {
+    width: 100%;
+    padding: 5% 10%;
+}
+
+.fieldLabel {
+    font-family: Roboto Mono;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    color: #828282;
+}
+
+.fieldInput {
+    background: #E0E0E0;
+    border-radius: 5px;
+    border: none;
+    width: 100%;
+    padding: 0 5%;
+    font-size: calc(8px + 6 * ((100vw - 360px) / 900));
+    color: #333333;
+    min-height: 30px;
+}
+
+.submitRow {
+    padding: 5%;
+}
+
+.submitButton {
+    border-radius: 10px;
+    margin: 0 auto;
+    width: 50%;
+    min-width: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #F2F2F2;
+    background-color: #2ED573;
+    cursor: pointer;
+}
+
+.confirmWrapper {
+    background-color: #ffffff;
+    padding: 2em;
+    border-radius: 20%;
+}
+
+.confirmTitle {
+    font-size: calc(14px + 12 * ((100vw - 360px) / 900));
+    font-family: Overpass;
+    color: #333333;
+}
+
+.confirmSubText {
+    font-size: calc(8px + 6 * ((100vw - 360px) / 900));
+    font-family: Overpass;
+    color: #828282;
+    margin: .5em 0;
+}
+
+.confirmDescWrapper {
+    padding: 2em;
+    background-color: #F2F2F2;
+    border-radius: 5px;
+
+}
+
+.confirmDescTitle {
+    font-size: calc(8px + 6 * ((100vw - 360px) / 900));
+    color: #333333;
+    font-family: Overpass;
+    font-weight: bold;
+    margin-bottom: 1em;
+}
+
+.confrimDescRow {
+    color: #4F4F4F;
+    font-size: calc(7px + 7 * ((100vw - 360px) / 900));
+    font-family: Overpass;
+    display: flex;
+    justify-content: space-between;
+}
+
+.confirmDescText {
+    color: #333333;
+    font-family: Overpass;
+    font-weight: bold;
+}
+
+.buttonRow {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    flex-direction: row;
+    margin-top: 2em;
+}
+
+.cancelButton {
+    background-color: #828282;
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #F2F2F2;
+    border-radius: 5px;
+    padding: .5em;
+    cursor: pointer;
+}
+
+.purchaseButton {
+    background-color: #2ED573;
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #F2F2F2;
+    border-radius: 5px;
+    padding: .5em;
+    cursor: pointer;
+}

@@ -6,16 +6,16 @@ import {
   LOGIN_FAIL,
   LOGOUT_SUCCESS,
   REGISTER_SUCCESS,
-  REGISTER_FAIL
+  REGISTER_FAIL,
+  SET_USER_STOCKS
 } from "../actions/types";
 
 const initialState = {
   isAuthenticated: null,
   isLoading: false,
-  user: null
 };
 
-export default function(state = initialState, action) {
+export default function (state = initialState, action) {
   switch (action.type) {
     case USER_LOADING:
       return {
@@ -47,10 +47,15 @@ export default function(state = initialState, action) {
 
       return {
         ...state,
-        user: null,
         isAuthenticated: false,
         isLoading: false
       };
+
+    case SET_USER_STOCKS:
+      return {
+        ...state,
+        stocks: action.payload
+      }
 
     default:
       return state;

@@ -26,7 +26,7 @@ class Trade extends Component {
   state = {
     orderType: "",
     ticker: "",
-    shares: "",
+    qty: "",
     price: ""
   };
 
@@ -43,9 +43,9 @@ class Trade extends Component {
 
   onChange = e => {
     const { name, value } = e.target;
-    // validation for shares
+    // validation for qty
     this.setState({ [name]: value });
-    if (name === "shares" || name === "price") {
+    if (name === "qty" || name === "price") {
       const elseVal = this.state[name] === "0.00" ? "" : this.state[name];
       const value = e.target.validity.valid ? e.target.value : elseVal;
       this.setState({ [name]: value });
@@ -57,7 +57,7 @@ class Trade extends Component {
   handleIncrement = e => {
     const name = e.target.getAttribute("name");
     const currVal = this.state[name];
-    if (name === "shares") {
+    if (name === "qty") {
       const newVal = currVal === "" ? 1 : parseInt(currVal) + 1;
       this.setState({ [name]: newVal });
     } else {
@@ -70,7 +70,7 @@ class Trade extends Component {
   handleDecrement = e => {
     const name = e.target.getAttribute("name");
     const currVal = this.state[name];
-    if (name === "shares") {
+    if (name === "qty") {
       const newVal = currVal === 0 || currVal - 1 <= 0 ? "" : currVal - 1;
       this.setState({ [name]: newVal });
     } else {
@@ -83,8 +83,8 @@ class Trade extends Component {
   };
 
   orderCheck = () => {
-    const { ticker, shares, price, orderType } = this.state;
-    if (ticker === "" || shares === "") {
+    const { ticker, qty, price, orderType } = this.state;
+    if (ticker === "" || qty === "") {
       return false;
     } else if (orderType !== "market" && price === "") {
       return false;
@@ -94,7 +94,7 @@ class Trade extends Component {
   };
 
   render() {
-    const { ticker, shares, price, orderType } = this.state;
+    const { ticker, qty, price, orderType } = this.state;
 
     return (
       <div className="w-100 h-100">
@@ -165,24 +165,24 @@ class Trade extends Component {
               <input
                 className={tradeField}
                 onChange={this.onChange}
-                name="shares"
+                name="qty"
                 type="number"
                 pattern="^[1-9][0-9]*"
                 min="0"
-                value={shares}
+                value={qty}
                 required
               />
-              <label className="position-absolute" htmlFor="shares">
-                Shares
+              <label className="position-absolute" htmlFor="qty">
+                qty
               </label>
               <ExpandLess
                 className={incrementButton + " position-absolute"}
-                name="shares"
+                name="qty"
                 onClick={this.handleIncrement.bind(this)}
               />
               <ExpandMore
                 className={decrementButton + " position-absolute"}
-                name="shares"
+                name="qty"
                 onClick={this.handleDecrement.bind(this)}
               />
             </div>
@@ -228,7 +228,7 @@ class Trade extends Component {
           <ConfirmTradeModal
             ticker={ticker}
             orderType={orderType}
-            shares={shares}
+            qty={qty}
             price={price}
             isReady={this.orderCheck}
             buttonClass={

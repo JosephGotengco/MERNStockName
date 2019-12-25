@@ -1,0 +1,219 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono:300,400&display=swap');
+
+.container {
+    color: #7f8fa6;
+    /* background-color: #2C2C2C; */
+    min-height: 100vh;
+    height: 100%;
+}
+
+.sidebarWrapper {
+    background-color: #FE8566;
+    min-height: 100vh;
+}
+
+.pageContent {
+    min-height: 100vh;
+    height: 100%;
+    padding-bottom: 10vh;
+    flex: 1;
+    max-width: 100%;
+}
+
+
+.title {
+    display: flex;
+    color: #FFFDDF;
+    font-family: 'Roboto Mono', monospace;
+    text-decoration: none;
+    font-size: 24px;
+    order: 2;
+    transition: width 1s;
+    padding: 10px;
+    /* padding-bottom: 15px; */
+    /* border-right: 1px solid #7f8fa6; */
+}
+
+.sidenavLinkWrapper {
+    margin: 15px 0;
+}
+
+.sidenavLink {
+    text-align: center;
+    color: #FFFDDF;
+    font-family: 'Roboto Mono', monospace;
+    padding: 10px;
+}
+
+.linkIcon {
+    height: 22px;
+    margin-right: 10px;
+}
+
+.sidenavLink:hover,
+.title:hover {
+    color: #7f8fa6;
+    text-decoration: none;
+}
+
+.controlRow {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    padding: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: #2f3640;
+}
+
+
+/* search bar css */
+.searchbarWrapper {
+    position: relative;
+    padding: 15px 0;
+    max-width: 350px;
+}
+
+.searchbar {
+    font-family: 'Roboto Mono', monospace;
+    border-radius: 3px;
+    padding-left: 20px;
+    height: 30px;
+    width: 100%;
+    max-width: 350px;
+    min-width: 100px;
+    color: #434B49;
+    border: none;
+    outline: none;
+}
+
+.searchbar::placeholder {
+    color: #434B49;
+}
+
+.searchbarIcon {
+    position: absolute;
+    height: 20px;
+    right: 5%;
+    top: 33%;
+    cursor: pointer;
+}
+
+/* search bar css */
+
+.wrapper {
+    display: flex;
+    flex-basis: 0px;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    align-self: stretch;
+    padding: 25px;
+    padding-left: 60px;
+    flex-direction: column;
+}
+
+.stockRow,
+.tradeRow {
+    flex: 0 1 auto;
+    display: inline-flex;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 100%;
+    min-width: 500px;
+    flex-direction: row;
+    margin: 0 auto;
+}
+
+.graphSection {
+    width: 100%;
+    height: 100%;
+    color: "#7f8fa6";
+    background-color: #FDFDFD;
+    font-family: 'Roboto Mono', monospace;
+    border-radius: 5px;
+    padding: 10px 30px;
+}
+
+.tableSection {
+    color: "#7f8fa6";
+    background-color: #FDFDFD;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 24px;
+    flex-direction: column;
+    border-radius: 5px;
+    height: 250px;
+    max-height: 400px;
+    width: 100%;
+    margin-top: 15px;
+    overflow-y: scroll;
+}
+
+/* .tableSection::-webkit-scrollbar {
+    width: 6px;
+}
+
+.tableSection::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.2);
+} */
+
+/* .tableSection::-webkit-scrollbar-thumb {
+    background-color: #2f3640;
+    border-radius: 15px;
+} */
+
+.controls {
+    color: #7f8fa6;
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+    border-bottom: 1px solid #7f8c8d;
+    margin-bottom: 10px;
+}
+
+.infoheader,
+.tradeheader {
+    display: flex;
+    justify-content: center;
+    color: #7f8fa6;
+    padding: 15px;
+    border-bottom: 1px solid #7f8c8d;
+    margin-bottom: 10px;
+}
+
+.infobody {
+    padding: 15px;
+    color: #7f8fa6;
+    display: flex;
+    justify-content: center;
+}
+
+.inforow {
+    display: flex;
+}
+
+.infoColLabel {
+    flex: 1;
+    justify-content: flex-start;
+}
+
+.infoColData {
+    flex: 1;
+    justify-content: flex-end;
+}
+
+.currentPriceWrapper {
+    margin-right: auto;
+    font-family: 'Roboto Mono', monospace;
+    color: #7f8fa6;
+    font-size: 16px;
+}
+
+.tradeSection {
+    color: "#7f8fa6";
+    background-color: #FDFDFD;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 24px;
+    flex-direction: column;
+    border-radius: 5px;
+    width: 100%;
+}

@@ -17,6 +17,7 @@ class Logout extends Component {
         <NavLink onClick={this.props.logout} href="#" className={link}>
           Logout
         </NavLink>
+
       </React.Fragment>
     );
   }

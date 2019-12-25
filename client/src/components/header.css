@@ -1,0 +1,15 @@
+.wrapper {
+    height: 10vh;
+    width: 100%;
+    background-color: #333333;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    color: #ffffff;
+}
+
+.pageTitle {
+    font-family: 'Roboto Mono', monospace;
+    margin-left: 1em;
+    font-size: calc(12px + 8 * ((100vw - 360px) / 900));
+}
