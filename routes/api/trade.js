@@ -42,7 +42,7 @@ router.post("/", isLoggedIn, async (req, res) => {
                 let i = stocks.indexOf(existingStock[0]);
                 stocks.splice(i, 1);
                 stocks.push({ ticker, qty: newQty });
-                let result = await User.updateOne(
+                await User.updateOne(
                     { _id: req.user._id },
                     {
                         $set: {
@@ -66,6 +66,8 @@ router.post("/", isLoggedIn, async (req, res) => {
                         }
                     }
                 );
+                user = await User.findById(req.user._id);
+                req.session.passport.user = user;
                 res.status(200).json({ msg: "Purchase successful", stocks, balance: newBalance });
             }
         } catch (e) {
