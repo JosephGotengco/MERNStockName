@@ -43,10 +43,10 @@ router.post("/", (req, res) => {
                 watchlist, hasConfirmedEmail, role, username, email } = user;
               res.json({
                 token,
-                user: {
-                  id, balance, registrationDate, stocks,
-                  watchlist, hasConfirmedEmail, role, username, email
-                }
+
+                id, balance, registrationDate, stocks,
+                watchlist, hasConfirmedEmail, role, username, email
+
               });
             }
           );

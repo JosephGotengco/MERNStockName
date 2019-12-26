@@ -99,6 +99,13 @@
     color: #333333;
     font-family: Overpass;
     font-weight: bold;
+    display: flex;
+}
+
+.input {
+    width: 20%;
+    margin-left: auto;
+    text-align: right;
 }
 
 .buttonRow {
@@ -132,3 +139,4 @@
     padding: .5em;
     cursor: pointer;
 }
+

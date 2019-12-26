@@ -11,7 +11,7 @@ import {
 
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { register } from '../../actions/authActions';
+import { register, login } from '../../actions/authActions';
 import { clearErrors } from '../../actions/errorActions';
 import { ReactComponent as RegisterImage } from './RegisterImage.svg';
 import { ReactComponent as LoginBG } from './LoginBG.svg';
@@ -19,7 +19,7 @@ import { ReactComponent as LoginBG } from './LoginBG.svg';
 import { link } from '../../css/navbar.module.css';
 import {
     companyName, loginImageCol, closeButtonWrapper, loginImage, loginImageWrapper,
-    loginTitle,  inputLabel, registerInputWrapper, companyNameWrapper,
+    loginTitle, inputLabel, registerInputWrapper, companyNameWrapper,
     registerInput, logInButtonWrapper, logInButton, logInButtonContainer, loginBG, errMsg, errMsgHidden,
     // signUpText, signUpLink,
 } from './LoginModal.module.css';
@@ -57,7 +57,9 @@ class RegisterModal extends Component {
         // If authenticated, close modal
         if (this.state.modal) {
             if (isAuthenticated) {
+                let { username, password } = this.state;
                 this.toggle();
+                this.props.login({ username, password });
             }
         }
     }
@@ -166,4 +168,4 @@ const mapStateToProps = state => ({
     error: state.error
 })
 
-export default connect(mapStateToProps, { register, clearErrors })(RegisterModal);
+export default connect(mapStateToProps, { register, clearErrors, login })(RegisterModal);

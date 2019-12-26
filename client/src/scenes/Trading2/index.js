@@ -8,7 +8,8 @@ import GraphTypeControl from "./components/GraphTypeControl";
 import GraphPeriodControl from "./components/GraphPeriodControl";
 import StocksTable from "./components/StocksTable";
 import Watchlist from "./components/Watchlist";
-import TradeForm from "./components/Trade";
+import BuyForm from "./components/Buy";
+// import SellForm from "./components/Sell";
 import { Redirect } from 'react-router-dom'
 import { loadUser } from "../../actions/authActions";
 import { connect } from "react-redux";
@@ -91,7 +92,8 @@ class Trading extends Component {
                                 </Col>
                                 <Col xl={3} style={{ marginTop: 15 }}>
                                     <div className={tradeSection}>
-                                        <TradeForm />
+                                        <BuyForm />
+                                        {/* <SellForm /> */}
                                     </div>
 
                                 </Col>

@@ -63,6 +63,7 @@ export const register = ({ username, email, password }) => dispatch => {
         type: REGISTER_SUCCESS,
         payload: res.data
       });
+      history.push("/trading");
     })
     .catch(err => {
       dispatch(

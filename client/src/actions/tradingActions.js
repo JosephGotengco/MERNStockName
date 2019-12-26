@@ -26,10 +26,10 @@ export const handleTrade = (ticker, prices, qty, orderType) => {
       .post("/api/trade", body, config)
       .then(res => {
         console.log(res.data);
-        let { stocks, balance } = res.data;
+        let { msg, stocks, balance } = res.data;
         dispatch({ type: SET_USER_STOCKS, payload: stocks });
         dispatch({ type: SET_USER_BAL, payload: balance });
-        dispatch({ type: TRADE_SUCCESS, payload: res.data.msg });
+        dispatch({ type: TRADE_SUCCESS, payload: msg });
       })
       .catch(e => {
         console.log(e)
@@ -53,6 +53,37 @@ export const getStockPrice = ticker => {
         if (e.response.status === 404) {
           dispatch({ type: TRADE_ERROR, payload: "Invalid ticker." });
         }
+      })
+  }
+}
+
+export const handleSale = (ticker, qty) => {
+  return (dispatch, getState) => {
+            // Headers
+            const config = {
+              headers: {
+                "Content-type": "application/json"
+              }
+            };
+
+            // Request body
+            const body = JSON.stringify({
+              ticker,
+              qty,
+            });
+            console.log(body)
+    return axios
+      .post(`/api/trade/sell`, body, config)
+      .then(res => {
+        console.log(res.data);
+        let { msg, stocks, balance } = res.data;
+        dispatch({ type: SET_USER_STOCKS, payload: stocks });
+        dispatch({ type: SET_USER_BAL, payload: balance });
+        dispatch({ type: TRADE_SUCCESS, payload: msg });
+      })
+      .catch(e => {
+        dispatch({ type: TRADE_ERROR, payload: e.response.data.msg });
+        dispatch({ type: SET_TRADE_MSG, payload: e.response.data.msg });
       })
   }
 }

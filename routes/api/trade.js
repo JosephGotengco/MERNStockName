@@ -130,7 +130,8 @@ router.post("/sell", async (req, res) => {
                 index = i;
             };
         }
-        if (index) return res.status(400).json({ msg: "You do not own shares of that ticker" });
+        console.log(index);
+        if (!index) return res.status(400).json({ msg: "You do not own shares of that ticker" });
 
         let stock = user.stocks[index];
         if (stock.qty < qty) return res.status(400).json({ msg: "You do not own enough shares of that ticker" });
@@ -140,6 +141,7 @@ router.post("/sell", async (req, res) => {
 
         let oldQty = stock.qty;
         stock.qty = stock.qty - qty;
+
         let newBalance = user.balance + qty * close;
         let newStocks = user.stocks;
         newStocks[index] = stock;
@@ -153,8 +155,9 @@ router.post("/sell", async (req, res) => {
                 }
             }
         )
-
-        res.status(200).json({ msg: "Sale successful", ticker, oldQty: oldQty, soldQty: qty, newQty: stock.qty, balance: newBalance });
+        user = await User.findById(req.user._id);
+        req.session.passport.user = user;
+        res.status(200).json({ msg: "Sale successful", stocks: newStocks, balance: newBalance });
 
     } catch (e) {
         console.log(e);
