@@ -7,9 +7,14 @@ const session = require("express-session");
 const passport = require("passport");
 const cookieParser = require("cookie-parser");
 require("./passport.js")(passport);
+
+
+
+
 const app = express();
 
 app.use(bodyParser.json());
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(
   session({
